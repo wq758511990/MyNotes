@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var intersection = function (nums1, nums2) {
+        // var hashMap = new Map()
+        // var resArr = new Array()
+        // for (var i = 0; i < nums1.length; i++) {
+        //     if(hashMap.has(nums1[i])) {
+        //         hashMap.set(nums1[i], hashMap.get(nums1[i]) + 1)
+        //     } else {
+        //         hashMap.set(nums1[i], 1)
+        //     }
+        // }
+        // for (var j = 0; j < nums2.length; j++) {
+        //     if (hashMap.has(nums2[j])) {
+        //         if(hashMap.get(nums2[j]) > 0) {
+        //             resArr.push(nums2[j])
+        //             hashMap.set(nums2[j], hashMap.get(nums2[j]) - 1)
+        //         }
+        //     }
+        // }
+        // return resArr
+        
+        // js api 不太懂。
+        return nums1.filter(el => nums2.includes(el) && nums2.splice(nums2.indexOf(el), 1))
+    };
+    console.log(intersection([1, 2, 2, 1], [2, 2]))
+</script>
+
+</html>

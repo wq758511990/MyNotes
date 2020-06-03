@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var isPalindrome = function (s) {
+        // 如果使用转换数组可以用arr.reverse()判断
+        // var str = s.replace(/[^0-9A-Za-z]+/g, '').toLowerCase()
+        // return str.split('').join('') == str.split('').reverse().join('')
+
+        var str = s.replace(/[^0-9A-Za-z]+/g, '').toLowerCase()
+        var length = parseInt((str.length / 2) + 1)
+        var left = 0
+        var right = str.length
+        for (var i = 0; i < length; i++) {
+            if (left <= right) {
+                if (str[left] == str[right - 1]) {
+                    left++
+                    right--
+                } else {
+                    return false
+                }
+            }
+        }
+        return true
+    };
+    console.log(isPalindrome('A man, a plan, a canal: Panama'))
+</script>
+
+</html>

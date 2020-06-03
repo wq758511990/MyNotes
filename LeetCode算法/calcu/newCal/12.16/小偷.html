@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var rob = function (nums) {
+        let nowRes = 0, lastRes = 0;
+        for (let i = 0; i < nums.length; i++) {
+            let temp = lastRes;
+            lastRes = nowRes;
+            nowRes = Math.max(temp + nums[i], nowRes);
+        }
+        return nowRes;
+    };
+    console.log(rob([2, 7, 9, 3, 1]))
+</script>
+
+</html>

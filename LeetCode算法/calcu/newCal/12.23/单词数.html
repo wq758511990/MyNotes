@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var countSegments = function (s) {
+        // if(s == '') return 0
+        // s = s.replace('\'', '')
+        // var reg = /\W+/g
+        // s = s.replace(reg, ' ')
+        // console.log(s)
+        // var res = 1
+        // for (let n of s) {
+        //     if (reg.test(n)) {
+        //         res++
+        //     }
+        // }
+        // return res
+
+        var segmentCount = 0;
+
+        for (var i = 0; i < s.length; i++) {
+            if ((i == 0 || s.charAt(i - 1) == ' ') && s.charAt(i) != ' ') {
+                segmentCount++;
+            }
+        }
+
+        return segmentCount;
+    };
+    console.log(countSegments("love live! mu'sic forever"))
+</script>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var maxSubArray = function (nums) {
+        // 太复杂 
+        // 通过判断当前和是否大于0 来降低复杂度
+        // var currMax = 0
+        // var currNum = 0
+        // var singleMax = 0
+        // var singleCount = 0
+        // var count = 0
+        // for (var i = 0; i < nums.length; i++) {
+        //     for (var j = i; j < nums.length; j++) {
+        //         currNum += nums[j]
+        //         if (singleCount == 0) {
+        //             singleMax = currNum
+        //             singleCount++
+        //         }
+        //         singleMax = Math.max(singleMax, currNum)
+        //     }
+        //     currNum = 0
+        //     if (count == 0) {
+        //         currMax = singleMax
+        //         count++
+        //     }
+        //     currMax = Math.max(singleMax, currMax)
+        // }
+        // return currMax
+
+        var max = nums[0]
+        var currNum = 0
+        for (var i = 0; i < nums.length; i++) {
+            if (currNum < 0) currNum = 0
+            currNum += nums[i]
+            max = Math.max(currNum, max)
+        }
+        return max
+    };
+    console.log(maxSubArray([-2, -1]))
+</script>
+
+</html>

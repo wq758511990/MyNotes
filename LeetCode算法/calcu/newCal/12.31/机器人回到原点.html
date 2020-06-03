@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var judgeCircle = function (moves) {
+        var arr = [0, 0]
+        for (var s of moves) {
+            switch (s) {
+                case 'U': arr[0] += 1; break;
+                case 'D': arr[0] -= 1; break;
+                case 'L': arr[1] += 1; break;
+                case 'R': arr[1] -= 1; break;
+            }
+        }
+        return arr[0] == 0 && arr[1] == 0
+    };
+    console.log(judgeCircle('LLRR'))
+</script>
+
+</html>

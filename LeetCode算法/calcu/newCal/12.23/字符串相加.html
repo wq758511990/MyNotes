@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var addStrings = function (num1, num2) {
+        var carry = 0, //进位 计算每一个回合的进位
+            l1 = num1.length,
+            l2 = num2.length,
+            arr = []; //放结果
+        var max = Math.max(l1, l2); // 长度比较
+        // 最多进行多少次计算 n
+        for (var i = l1 - 1, j = l2 - 1, n = max - 1; n >= 0; i-- , j-- , n--) {
+            // + '1' 相当于parseInt('1')
+            var sum = (+num1[i] || 0) + (+num2[j] || 0) + carry; //每一次的相加和  || 
+            if (sum >= 10) {
+                carry = 1;
+                arr.push(sum - 10);
+            } else {
+                carry = 0;
+                arr.push(sum);
+            }
+        }
+        if (carry == 1) {
+            arr.push(carry);
+        }
+        return arr.reverse().join('');   //倒置
+    };
+    console.log(addStrings('123123', '321312'))
+</script>
+
+</html>

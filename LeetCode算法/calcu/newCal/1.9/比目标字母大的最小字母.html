@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var nextGreatestLetter = function (letters, target) {
+        // 本身就是排好序的
+        // letters.sort()
+        var len = letters.length
+        var start = letters[0].charCodeAt()
+        var end = letters[len - 1].charCodeAt()
+        var targetNum = target.charCodeAt()
+        if(targetNum < start || targetNum >= end) return letters[0]
+        // for(var i = 0; i < letters.length; i++) {
+        //     if(letters[i].charCodeAt() > targetNum) {
+        //         return letters[i]
+        //     }
+        // }
+        var left = 0
+        var right = len - 1
+        while(left < right) {
+            var mid = parseInt((left + right) / 2)
+            if(letters[mid].charCodeAt() > targetNum) {
+                right = mid
+            } else {
+                left = mid + 1
+            }
+        }
+        return letters[left]
+    };
+    console.log(nextGreatestLetter(["c", "f", "j"], 'c'))
+</script>
+
+</html>

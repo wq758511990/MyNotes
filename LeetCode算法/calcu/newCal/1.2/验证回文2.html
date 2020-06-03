@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var validPalindrome = function (s) {
+        let count = 1;
+        function check(left, right) {
+            for (; left < right; ++left, --right) {
+                if (s[left] === s[right]) {
+                    continue;
+                }
+                if (count < 1) {
+                    return false;
+                }
+                --count;
+                return check(left, right - 1) || check(left + 1, right);
+            }
+            return true;
+        }
+        return check(0, s.length - 1);
+    };
+    console.log(validPalindrome('abc'))
+</script>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var containsDuplicate = function (nums, k) {
+        if(nums.length == 0) return false
+        var map = new Map()
+        var maxDis = 0
+        for (var i = 0; i < nums.length; i++) {
+            if (map.has(nums[i])) {
+                maxDis = maxDis == 0 ? (i - map.get(nums[i])) : Math.min((i - map.get(nums[i])), maxDis)
+            }
+            map.set(nums[i], i)
+        }
+        return maxDis == 0 ? false : maxDis <= k
+    };
+    console.log(containsDuplicate([1, 0 ,1 ,1], 1))
+</script>
+
+</html>

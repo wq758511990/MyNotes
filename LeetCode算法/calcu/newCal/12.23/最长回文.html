@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var longestPalindrome = function (s) {
+        var hashMap = new Map()
+        var sum = 0
+        for (var i = 0; i < s.length; i++) {
+            if (hashMap.has(s[i])) {
+                hashMap.delete(s[i])
+                sum += 2
+            } else {
+                hashMap.set(s[i], 1)
+            }
+        }
+        // for(var [key, value] of hashMap) {
+        //     if(value >= 2 && value % 2 == 0) {
+        //         sum += value
+        //     } else {
+        //         sum += value - 1
+        //     }
+        // }
+
+
+        // if(sum < s.length) {
+        //     sum++
+        // }
+
+        return sum < s.length ? sum + 1 : sum
+    };
+
+    console.log(longestPalindrome('abccccdd'))
+</script>
+
+</html>

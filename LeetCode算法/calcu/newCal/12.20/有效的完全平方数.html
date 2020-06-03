@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var isPerfectSquare = function (num) {
+        // 直接调内置函数, 通过Math.round() ceil() floor() 判断结果是否等于本身
+        // var intNum = Math.sqrt(num)
+        // return Math.round(intNum) == intNum
+
+        // if (num == 0 || num == 1) {
+        //     return true
+        // }
+        // else if (num == 2) return false
+
+        // 这里不要用for 用while
+
+        // for (var i = 0; i < parseInt(num / 2) + 1; i++) {
+        //     if (i * i == num) {
+        //         return true
+        //     }
+        // }
+        // return false
+
+        // var i = 1
+        // while(i * i < num) {
+        //     i++
+        // }
+        // return i * i == num
+
+        // 1 + 3 + 5 + 7 + 9 + ... + (2n - 1) = n ^ 2
+        // n的平方等于前n项连续奇数的和
+        // var sum = 1
+        // while(num > 0) {
+        //     num -= sum
+        //     sum += 2
+        // }
+        // return num == 0
+
+        // 牛顿迭代(不是很懂)
+        var i = num
+        while (i * i > num) {
+            i = parseInt((i + num / i) / 2)
+        }
+        return i * i == num
+    };
+    console.log(isPerfectSquare(16))
+</script>
+
+</html>

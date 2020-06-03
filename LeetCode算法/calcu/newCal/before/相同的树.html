@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // var isSameTree = function (p, q) {
+    //     // 先序递归
+    //     if (p === null && q === null) return true;
+    //     if (p === null || q === null) return false;
+    //     return p.val === q.val && isSameTree(p.left, q.left) && isSameTree(p.right, q.right)
+
+    //     //
+    // };
+
+    var isSameTree = function (p, q) {
+        // 只有初始值同时为空时才能结束判断
+        if (p === null && q === null) return true;
+
+        let pq = [p], qq = [q];
+        while (pq.length > 0) {
+            p = pq.shift();
+            q = qq.shift();
+            if (!help(p, q)) return false;
+            // 需要判断两个节点的左子节点和右子节点是否相同再继续向下走
+            // 防止出现[1,2]和[1,null,2]判断出错的情况
+            if (!help(p.left, q.left)) return false;
+            p.left && pq.push(p.left);
+            q.left && qq.push(q.left);
+            if (!help(p.right, q.right)) return false;
+            p.right && pq.push(p.right);
+            q.right && qq.push(q.right);
+        }
+        return true;
+    };
+
+    function help(p, q) {
+        if (p === null && q === null) return true;
+        if (p === null || q === null) return false;
+        if (p.val !== q.val) return false;
+        return true;
+    }
+    console.log(isSameTree([1, 2, 3], [1, 2, 3]))
+</script>
+
+</html>

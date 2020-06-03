@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var addBinary = function (a, b) {
+        // 太菜了
+        // 萨比解法
+
+        // var temp = ''
+        // var flashNum = 0
+        // if (a.length < b.length) {
+        //     temp = a
+        //     a = b
+        //     b = temp
+        // }
+        // a = a.split('')
+        // b = b.split('')
+        // var minusLength = a.length - b.length
+        // for(var j = 0; j < minusLength; j++) {
+        //     b.unshift(0)
+        // }
+        // for (var i = a.length - 1; i >= 0; i--) {
+        //     var total = b[i] ? parseInt(a[i]) + parseInt(b[i]) + flashNum : parseInt(a[i]) + flashNum
+        //     if (total >= 2) {
+        //         a[i] = total == 2 ? 0 : 1
+        //         if(i == 0) {
+        //             a.unshift(1)
+        //             return a.join('')
+        //         }
+        //         flashNum = 1
+        //         continue
+        //     } else {
+        //         flashNum = 0
+        //         a[i] = total
+        //     }
+        // }
+        // return a.join('')
+        
+        // 看不懂。
+        // let str = ''
+        // let i = a.length - 1, j = b.length - 1
+        // let dight = 0, cary = 0, sum = 0
+        // while (i >= 0 || j >= 0) {
+        //     sum = ~~a[i] + ~~b[j] + cary
+        //     dight = sum % 2
+        //     cary = (sum - dight) / 2
+        //     str = dight + str
+        //     i--
+        //     j--
+        // }
+        // return cary ? cary + str : str
+    };
+    console.log(addBinary('1010', '1011'))
+</script>
+
+</html>

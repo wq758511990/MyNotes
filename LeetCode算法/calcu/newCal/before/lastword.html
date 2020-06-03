@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var lengthOfLastWord = function (s) {
+        // 将2个及以上的空格去掉
+        // s = s.replace(/\s+/g, ' ')
+        // var index = s.lastIndexOf(' ')
+        // if (index == s.length - 1) {
+        //     var lastIndex = s.lastIndexOf(' ', index - 1)
+        //     if (lastIndex == -1) {
+        //         return s.slice(0, index).length
+        //     } else {
+        //         return s.slice(lastIndex, index - 1).length
+        //     }
+        // } else if (index == -1) {
+        //     return s.length
+        // }
+        // return s.slice(index + 1, s.length).length
+
+
+        // 用trim()去掉头尾空格 更易判断
+        s = s.trim()
+        var index = s.lastIndexOf(' ')
+        if(index == -1) {
+            return s.length
+        } else {
+            return s.slice(index + 1, s.length).length
+        }
+    };
+    console.log(lengthOfLastWord("b   a    "))
+</script>
+
+</html>

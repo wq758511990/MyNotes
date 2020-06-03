@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var findMaxAverage = function (nums, k) {
+        // 慢
+        // var maxSum = 0
+        // var count = 0
+        // for (var i = 0; i <= nums.length - k; i++) {
+        //     var curSum = 0
+        //     for (var j = i; j < i + k; j++) {
+        //         curSum += nums[j]
+        //     }
+        //     if (count == 0) {
+        //         maxSum = curSum
+        //         count++
+        //     } else {
+        //         maxSum = Math.max(maxSum, curSum)
+        //     }
+        //     curSum = 0
+        // }
+        // return maxSum / k
+        //
+
+        // 减去上一段首部加上下一段首部
+        var maxSum = 0
+        var curSum = 0
+        var currCount = 0
+        var count = 0
+        for (var i = 0; i < nums.length; i++) {
+            curSum += nums[i]
+            currCount++
+            if (currCount >= k) {
+                if (count == 0) {
+                    maxSum = curSum
+                    count++
+                } else {
+                    curSum -= nums[i - k]
+                    maxSum = Math.max(maxSum, curSum)
+                }
+            }
+        }
+        return Math.max(maxSum, curSum) / k
+    };
+    console.log(findMaxAverage([1, 12, -5, -6, 50, 3],
+        4))
+</script>
+
+</html>

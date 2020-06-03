@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var getHint = function (secret, guess) {
+        // 遍历一次 算出A个数并且都push到数组里，第二次遍历重复的去掉， 总长度- 剩余长度 - a 就是B
+        // var aCount = 0
+        // var bCount = 0
+        // var tempArr = new Array()
+        // for(var i = 0; i < secret.length; i++) {
+        //     tempArr.push(secret[i])
+        //     if(secret[i] == guess[i]) {
+        //         aCount ++
+        //     }
+        // }
+        // for(var j = 0; j < guess.length; j++) {
+        //     var spliceIndex = tempArr.indexOf(guess[j])
+        //     if(spliceIndex != -1) {
+        //         tempArr.splice(spliceIndex, 1)
+        //     }
+        // }
+        // bCount = guess.length - tempArr.length - aCount
+        // return `${aCount}A${bCount}B`
+
+        //哈希表一次遍历尝试
+        var aCount = 0
+        var bCount = 0
+        var hashMap = new Map()
+        for (var i = 0; i < secret.length; i++) {
+            if (secret[i] == guess[i]) {
+                aCount++
+            } else {
+                let count = ~~hashMap.get(secret[i]);
+                if (count < 0) {
+                    bCount++;
+                }
+                hashMap.set(secret[i], ++count);
+                count = ~~hashMap.get(guess[i]);
+                if (count > 0) {
+                    bCount++;
+                }
+                hashMap.set(guess[i], --count);
+            }
+        }
+        console.log(hashMap)
+        return `${aCount}A${bCount}B`
+    };
+    console.log(getHint('1123', '0111'))
+</script>
+
+</html>

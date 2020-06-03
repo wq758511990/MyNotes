@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var maxProfit = function (prices) {
+        // 最简单的 ， 太耗时
+        // var max = 0
+        // for (var i = 0; i < prices.length; i++) {
+        //     for (var j = i + 1; j < prices.length; j++) {
+        //         var dis = prices[j] - prices[i]
+        //         if (dis > 0) {
+        //             max = Math.max(dis, max)
+        //         }
+        //     }
+        // }
+        // return max
+        
+        // 利润 = 今天卖出的值 - 之前买入的值
+        // 记录今天之前买入的最低价 min
+        // 比较今天卖出 - min 与之后每一天卖出 - min 的值
+        
+        var max = 0
+        var min = prices[0]
+        for(var i = 0; i < prices.length; i++) {
+            max = Math.max(prices[i] - min, max)
+            min = Math.min(prices[i], min)
+        }
+        return max
+
+    };
+    console.log(maxProfit([7, 1, 5, 3, 6, 4]))
+</script>
+
+</html>

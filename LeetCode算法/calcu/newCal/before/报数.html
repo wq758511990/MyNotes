@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var countAndSay = function (n) {
+        // 正则流P
+        // var prev = '1'
+        // for(var i = 1; i < n; i++) {
+        //     prev = prev.replace(/(\d)\1*/g, item =>`${item.length}${item[0]}`)
+        // }
+        // return prev
+        
+        // 递归
+        if (n == 1) return '1'
+        var str = countAndSay(n - 1)
+        var count = 0
+        var tempChar = str[0]
+        var currStr = ''
+        for (var i = 0; i < str.length; i++) {
+            if (tempChar == str[i]) {
+                count++
+            } else {
+                currStr +=  '' + count + tempChar
+                count = 1
+                tempChar = str[i]
+            }
+            if(i == str.length - 1) currStr +=  '' + count + tempChar
+        }
+        return currStr
+
+        // if (n === 1) return "1";
+        // else {
+        //     var str = countAndSay(n - 1);
+        //     var temp = str[0];
+        //     var count = 0;
+        //     var ans = '';
+        //     for (var i = 0; i < str.length; i++) {
+        //         if (str[i] === temp) count++;
+        //         else {
+        //             // ans += count.toString() + temp.toString();
+        //             ans += '' + count + temp;
+        //             temp = str[i];
+        //             count = 1;
+        //         }
+        //         // if (i===str.length-1) ans += count.toString() + temp.toString();
+        //         if (i === str.length - 1) ans += '' + count + temp;
+        //     }
+        //     return ans
+        // }
+    };
+
+    console.log(countAndSay(30))
+</script>
+
+</html>

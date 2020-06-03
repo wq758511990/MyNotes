@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var intersection = function (nums1, nums2) {
+        var hashMap = new Map()
+        var resArr = new Array()
+        for (var i = 0; i < nums1.length; i++) {
+            hashMap.set(nums1[i], 0)
+        }
+        for (var j = 0; j < nums2.length; j++) {
+            if (hashMap.has(nums2[j])) {
+                hashMap.set(nums2[j], hashMap.get(nums2[j]) + 1)
+                if (resArr.indexOf(nums2[j]) == -1) {
+                    resArr.push(nums2[j])
+                }
+            }
+        }
+        return resArr
+
+        // var arr1 = Array.from(new Set(...[nums1]))
+        // var arr2 = Array.from(new Set(...[nums2]))
+        // return arr1 && arr2
+
+    };
+    console.log(intersection([4, 9, 5], [9, 4, 9, 8, 4]))
+</script>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var countPrimeSetBits = function (L, R) {
+        var primeCount = 0
+        while (L <= R) {
+            // var cur2Str = L.toString(2)
+            var curCount = 0
+            // for (var j = 0; j < cur2Str.length; j++) {
+            //     if (cur2Str[j] == 1) {
+            //         curCount++
+            //     }
+            // }
+            // if (isPrime(curCount)) primeCount++
+            // L++
+            let splitNum = L
+            while(splitNum) {
+                console.log(splitNum)
+                console.log(splitNum & (splitNum - 1))
+                console.log('-----------')
+                splitNum &= splitNum - 1  // 这里计算1的数量是关键 去掉末尾的1 能去几次就代表有几个1
+                curCount ++
+            }
+            if(isPrime(curCount)) primeCount++
+            L++
+        }
+        return primeCount
+    };
+
+    var isPrime = function (num) {
+        if(num == 0 || num == 1) return false
+        for (var i = 2; i < parseInt(Math.sqrt(num)) + 1; i++) {
+            if (num % i == 0) {
+                return false
+            }
+        }
+        return true
+    };
+
+    console.log(countPrimeSetBits(6, 10))
+</script>
+
+</html>

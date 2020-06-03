@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var trailingZeroes = function (n) {
+        // 数值太大会溢出 不可取
+        // var sum = 1
+        // var count = 0
+        // for(var i = 1; i <= n; i++) {
+        //     sum *= i
+        // }
+        // var str = sum.toString()
+        // for(var j = str.length - 1; j > 0; j--) {
+        //     if(str[j] == '0') {
+        //         count++
+        //     } else {
+        //         return count
+        //     }
+        // }
+        // return count
+
+        var p = 0
+        while (n >= 5) {
+            n = parseInt(n / 5)
+            p += n
+        }
+        return p
+    };
+    console.log(trailingZeroes(40))
+</script>
+
+</html>

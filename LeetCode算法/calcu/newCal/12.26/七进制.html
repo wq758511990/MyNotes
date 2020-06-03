@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var convertToBase7 = function (num) {
+        if(num == 0) return '0'
+        var symbol = ''
+        var resArr = []
+        if(num < 0) symbol = '-'
+        num = Math.abs(num)
+        while(num > 0) {
+            // 添加到头部
+            resArr.unshift(num % 7)
+            num = parseInt(num / 7)
+        }
+        return symbol + resArr.join('')
+    };
+    console.log(convertToBase7(7))
+</script>
+
+</html>

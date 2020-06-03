@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var shortestCompletingWord = function (licensePlate, words) {
+        var reg = /[\d\s]*/g
+        var reg1 = /[^(ah)]*/g
+        var hashMap = new Map()
+        var minLen = Infinity
+        licensePlate = licensePlate.replace(reg, '').toLowerCase()
+        for (var s of words) {
+            let preS = s
+            s = s.toLowerCase().replace(reg1, '')
+            if ((s.split('').sort().join('').indexOf(licensePlate.split('').sort().join('')) != -1) || ) {
+                minLen = Math.min(minLen, preS.length)
+                hashMap.set(preS, preS.length)
+            }
+        }
+        for (var [key, value] of hashMap) {
+            if (value == minLen) {
+                return key
+            }
+        }
+    };
+    console.log(shortestCompletingWord("1s3 PSt",
+        ["step", "steps", "stripe", "stepple"]))
+</script>
+
+</html>

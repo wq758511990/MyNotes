@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var checkRecord = function (s) {
+        // var count = 0
+        // var currCount = 0
+        // var aCount = 0
+        // for(var i = 0; i < s.length; i++) {
+        //     if(s[i] == 'A') {
+        //         aCount++
+        //     }
+        //     if(s[i] == 'L') {
+        //         currCount++
+        //     }
+        //     if(s[i] == 'L' && s[i + 1] != 'L') {
+        //         count = Math.max(count, currCount)
+        //         currCount = 0
+        //     }
+        // }
+        // if(aCount <= 1 && count <= 2) {
+        //     return true
+        // }
+        // return false
+
+        // indexOf
+        return (s.indexOf('A') == s.lastIndexOf('A')) && (s.indexOf('LLL') == -1)
+    };
+    console.log(checkRecord('PPALLPLLA'))
+</script>
+
+</html>

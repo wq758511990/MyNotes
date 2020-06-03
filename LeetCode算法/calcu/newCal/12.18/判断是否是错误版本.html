@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    /**
+     * @param {function} isBadVersion()
+     * @return {function}
+     */
+    var solution = function (isBadVersion) {
+        /**
+         * @param {integer} n Total versions
+         * @return {integer} The first bad version
+         */
+        return function (n) {
+            var left = 0
+            var right = n - 1
+            while (left <= right) {
+                var mid = parseInt((left + right) / 2 + 1)
+                if (isBadVersion(mid)) {
+                    right = mid + 1
+                } else {
+                    left = mid - 1
+                }
+            }
+            return mid
+        };
+    };
+    console.log(solution(8))
+</script>
+
+</html>

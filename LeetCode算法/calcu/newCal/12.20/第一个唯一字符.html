@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var firstUniqChar = function (s) {
+        // if(s.length == 0) return -1
+        // var hashMap = new Map()
+        // for(var i = 0; i < s.length; i++) {
+        //     if(hashMap.has(s[i])) {
+        //         hashMap.set(s[i], hashMap.get(s[i]) + 1)
+        //     } else {
+        //         hashMap.set(s[i], 0)
+        //     }
+        // }
+        // for(var [key, value] of hashMap) {
+        //     if(value == 0) {
+        //         return s.indexOf(key)
+        //     }
+        // }
+        // return -1
+
+        // 两个哈希表
+        // if (s.length == 0) return -1
+        // var hashMap1 = new Map()
+        // var hashMap2 = new Map()
+        // for (var i = 0; i < s.length; i++) {
+        //     if (hashMap1.has(s[i])) {
+        //         hashMap1.delete(s[i])
+        //         hashMap2.set(s[i], i)
+        //     } else {
+        //         if (!hashMap2.has(s[i])) {
+        //             hashMap1.set(s[i], i)
+        //         }
+        //     }
+        // }
+        // console.log(hashMap1)
+        // console.log(hashMap2)
+        // if(hashMap1.size == 0) return -1
+        // for(var [key, value] of hashMap1) {
+        //     return value
+        // }
+
+        // 遍历两次字符串
+        // if (s.length == 0) return -1
+        // var hashMap1 = new Map()
+        // for (var i = 0; i < s.length; i++) {
+        //     if (hashMap1.has(s[i])) {
+        //         hashMap1.set(s[i], hashMap1.get(s[i]) + 1)
+        //     } else {
+        //         hashMap1.set(s[i], 0)
+        //     }
+        // }
+        // console.log(hashMap1)
+        // for(var j = 0; j < s.length; j++) {
+        //     if(hashMap1.get(s[j]) == 0) {
+        //         return s.indexOf(s[j])
+        //     }
+        // }
+        // return -1
+        
+        // 大佬解法
+        if (w.length <= 1) return w.length - 1;
+        if (w.length > 26) {
+            const ps = 'abcdefghijklmnopqrstuvwxyz';
+            let found = w.length;
+            for (let i = 0; i < ps.length; ++i) {
+                const left = w.indexOf(ps[i]);
+                if (left === w.lastIndexOf(ps[i])) {
+                    if (found > left && left > -1) found = left;
+                }
+                const right = w.indexOf(ps[ps.length - 1 - i]);
+                if (right === w.lastIndexOf(ps[ps.length - 1 - i])) {
+                    if (found > right && right > -1)
+                        found = right;
+                }
+                if (found === 0) break;
+                if (i >= ps.length / 2) {
+                    break;
+                }
+            }
+            if (found === w.length) return -1;
+            return found;
+        } else {
+            let i = 0;
+            while (true) {
+                if (w.indexOf(w[i], i + 1) === -1 && w.lastIndexOf(w[i], i - 1) === -1) {
+                    return i;
+                } else if (i === 0) {
+                    if (w.indexOf(w[i], i + 1) === -1) return i;
+                } else if (i === w.length - 1) {
+                    if (w.lastIndexOf(w[i], i - 1) === -1) return i;
+                    return -1;
+                }
+                ++i;
+            }
+        }
+    };
+
+    console.log(firstUniqChar("loveleetcode"))
+</script>
+
+</html>

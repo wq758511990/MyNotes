@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var licenseKeyFormatting = function (S, K) {
+        var str = S.replace(/-/g, '')
+        if(str.length <= K) return str.toUpperCase()
+        var currIndex = str.length % K
+        var resStr = currIndex == 0 ? '' : str.substr(0, currIndex).toUpperCase() + '-'
+        while (currIndex < str.length) {
+            resStr += str.substr(currIndex, K).toUpperCase()
+            if (currIndex < str.length - K) resStr += '-'
+            currIndex += K
+        }
+        return resStr
+    };
+    console.log(licenseKeyFormatting("2-4A0r7-4k",
+        3))
+</script>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var isAnagram = function (s, t) {
+        // js自带api 太慢 100+ms
+        // return Array.from(s).sort().join('') == Array.from(t).sort().join('')
+
+        // 慢得一批。。 500+ms
+        // if(s == '' && t == '') return true
+        // var arr = []
+        // for(var i = 0; i < s.length; i++) {
+        //     arr.push(s[i])
+        // }
+        // if(arr.length == 0) return false
+        // for(var j = 0; j < t.length; j++) {
+
+        //     var delIndex = arr.indexOf(t[j])
+        //     if(delIndex == -1) return false
+        //     else {
+        //         arr.splice(delIndex, 1)
+        //     }
+        // }
+        // return arr.length == 0
+
+        // 建立字母表 用charCodeAt 转换
+        var sArr = new Array(26)
+        var comArr = new Array(26)
+        comArr.fill(0)
+        sArr.fill(0)
+
+        for (var i = 0; i < s.length; i++) {
+            sArr[s[i].charCodeAt() - 'a'.charCodeAt()] += 1
+        }
+        for (var j = 0; j < t.length; j++) {
+            sArr[t[j].charCodeAt() - 'a'.charCodeAt()] -= 1
+        }
+        return sArr.join('') == comArr.join('')
+        
+        // 或者用Map 来 当map.size == 0 则全删完了
+    };
+    console.log(isAnagram("anagram", "nagaram"))
+</script>
+
+</html>

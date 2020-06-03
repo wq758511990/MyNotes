@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var findUnsortedSubarray = function (nums) {
+        if(nums.length == 1 || nums.length == 0) return 0
+        var left = 0
+        var right = nums.length - 1
+        var count = 0
+        var arr = nums.concat()
+        arr.sort((a, b) => a - b)
+        while (left < right && count < nums.length - 1) {
+            count++
+            if (arr[left] == nums[left]) {
+                left++
+            }
+            if (arr[right] == nums[right]) {
+                right--
+            }
+        }
+        return left == right ? 0 : (right - left + 1)
+    };
+    console.log(findUnsortedSubarray([1, 2, 3, 3, 3]))
+</script>
+
+</html>

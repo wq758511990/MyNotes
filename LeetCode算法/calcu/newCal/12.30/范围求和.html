@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var matrixReshape = function (m, n, ops) {
+        if (ops.length == 0) return m * n
+        var aMin = ops[0][0]
+        var bMin = ops[0][1]
+        // for (var i = 0; i < ops.length; i++) {
+        //     aMin = Math.min(ops[i][0], aMin)
+        //     bMin = Math.min(ops[i][1], bMin)
+        // }
+        for (s of ops) {
+            aMin = Math.min(s[0], aMin)
+            bMin = Math.min(s[1], bMin)
+        }
+        return aMin * bMin
+    };
+    console.log(matrixReshape(3, 3, [[2, 2], [3, 3]]))
+</script>
+
+</html>

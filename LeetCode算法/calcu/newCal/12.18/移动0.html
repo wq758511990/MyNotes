@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var moveZeroes = function (nums) {
+        var length = nums.length
+        // 遇到非0往前移动
+        var index = 0
+        for(var i = 0; i < nums.length; i++) {
+            if(nums[i] != 0) {
+                nums[index] = nums[i]
+                index += 1
+            }
+        }
+        // return nums
+        while(index < length) {
+            nums[index] = 0
+            index ++
+        }
+        return nums
+    };
+    console.log(moveZeroes([0, 0, 1]))
+</script>
+
+</html>

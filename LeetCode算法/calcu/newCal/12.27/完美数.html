@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var checkPerfectNumber = function (num) {
+        if (num <= 2) return false
+        var sum = 1
+        for (var i = 2; i < Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                sum += i
+                if (i * i != num) {
+                    sum += (num / i)
+                }
+            }
+        }
+        return sum == num
+
+        // var sum = 1
+        // var left = 2
+        // var right = parseInt(num / 2) + 1
+        // while (left <= right) {
+        //     if (left == right) {
+        //         if ((num / left) == Math.floor(num / left)) sum += left
+        //     } else {
+        //         if ((num / left) == Math.floor(num / left)) sum += left
+        //         if ((num / right) == Math.floor(num / right)) sum += right
+        //     }
+        //     left++
+        //     right--
+        // }
+        // return sum == num
+
+        // var sum = 1
+        // var hashMap = new Map()
+        // for (var i = 2; i < num; i++) {
+        //     if (num % i == 0) {
+        //         if (hashMap.has(i)) {
+        //             continue
+        //         } else {
+        //             hashMap.set(i, 1)
+        //             hashMap.set((num / i), 1)
+        //         }
+        //     }
+        // }
+        // for(var [key, value] of hashMap) {
+        //     sum += key
+        // }
+        // return sum == num
+    };
+    console.log(checkPerfectNumber(6))
+</script>
+
+</html>

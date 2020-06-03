@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var addDigits = function (n) {
+        // var nStr = num.toString()
+        // var res = 0
+        // if (nStr.length == 1) return num
+        // for (var i = 0; i < nStr.length; i++) {
+        //     res += parseInt(nStr[i])
+        // }
+        // return addDigits(res)
+
+        // return (num-1)%9+1;
+
+        if (num == 0) return 0
+        return num % 9 == 0 ? 9 : num % 9
+    };
+
+    console.log(addDigits(38))
+</script>
+
+</html>

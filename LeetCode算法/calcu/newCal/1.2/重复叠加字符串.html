@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var repeatedStringMatch = function (A, B) {
+        var len1 = A.length
+        var len2 = B.length
+        var minCount = len2 % len1 == 0 ? len2 / len1 : parseInt(len2 / len1) + 1
+        var minWords = ''
+        var i = 0
+        while (i < minCount) {
+            minWords += A
+            i++
+        }
+        return minWords.indexOf(B) != -1 ? minCount : (minWords + A).indexOf(B) != -1 ? minCount + 1 : -1
+    };
+    console.log(repeatedStringMatch('abcd', 'abcdabcdabcd'))
+</script>
+
+</html>

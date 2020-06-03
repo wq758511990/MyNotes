@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var repeatedSubstringPattern = function (s) {
+        var str = 'abc'
+        var reg =new RegExp(`/${str}+/`)
+        console.log(reg.test('abcabc'))
+        if(s.length == 0) return false
+        var left = 0
+        var right = s.length / 2
+        while(left < s.length / 2) {
+            if(s[left] == s[right]) {
+                left ++
+                right ++
+            } else {
+                return false
+            }
+        }
+        return true
+    };
+    console.log(repeatedSubstringPattern("abbaab"))
+</script>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var canPlaceFlowers = function (flowerbed, n) {
+        var maxCount = 0
+        for(var i = 0; i < flowerbed.length; i++) {
+            if(flowerbed[i] == 0 && flowerbed[i - 1] != 1 && flowerbed[i + 1] != 1) {
+                flowerbed[i] = 1
+                maxCount++
+            }
+        }
+        return maxCount >= n
+    };
+    console.log(canPlaceFlowers([1, 0, 0, 0, 0, 1], 2))
+</script>
+
+</html>

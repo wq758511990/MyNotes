@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var reverseStr = function (s, k) {
+        // var currIndex = 0
+        // var count = 0
+        // var resStr = ''
+        // var currStr = ''
+        // while (currIndex + k <= s.length) {
+        //     let tempArr = s.split('').splice(currIndex, k)
+        //     currStr = count % 2 == 0 ? tempArr.reverse().join('') : tempArr.join('')
+        //     resStr += currStr
+        //     currIndex += k
+        //     count++
+        // }
+        // if(count % 2 == 0) {
+        //     resStr += s.split('').splice(currIndex, s.length - currIndex).reverse().join('')
+        // } else {
+        //     resStr += s.split('').splice(currIndex, s.length - currIndex).join('')
+        // }
+        // return resStr
+
+        var count = 0
+        var resStr = ''
+        var currIndex = 0
+        while (currIndex + k <= s.length) {
+            if (count % 2 == 0) {
+                for (var i = ((count + 1) * k) - 1; i >= count * k; i--) {
+                    resStr += s[i]
+                }
+            } else {
+                for (var i = count * k; i < (count + 1) * k; i++) {
+                    resStr += s[i]
+                }
+            }
+            count++
+            currIndex += k
+        }
+        if (count % 2 == 0) {
+            for (var i = s.length - 1; i >= count * k; i--) {
+                resStr += s[i]
+            }
+        } else {
+            for (var i = count * k; i < s.length; i++) {
+                resStr += s[i]
+            }
+        }
+        return resStr
+    };
+    console.log(reverseStr('abcdefg', 2))
+</script>
+
+</html>

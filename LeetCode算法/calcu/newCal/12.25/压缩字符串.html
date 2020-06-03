@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var compress = function (chars) {
+        // Leetcode 报错 原因不明。
+        // if (chars.length == 1) return chars
+        // var repeatCount = 1
+        // for (var i = 0; i < chars.length; i++) {
+        //     if (chars[i] == chars[i + 1]) {
+        //         chars.splice(i, 1)
+        //         repeatCount++
+        //         i--
+        //     } else {
+        //         if (i < chars.length) {
+        //             for (var j = 0; j < repeatCount.toString().length; j++) {
+        //                 chars.splice(i + 1, 0, repeatCount.toString()[j])
+        //                 i++
+        //             }
+        //             repeatCount = 1
+        //         } else {
+        //             return chars
+        //         }
+        //     }
+        // }
+        // return chars
+
+        if(chars.length == 1) return chars
+        var str = ''
+        var hashMap = new Map()
+        for(var i = 0; i < chars.length; i++) {
+            if(hashMap.has(chars[i])) {
+                hashMap.set(chars[i], hashMap.get(chars[i]) + 1)
+            } else {
+                hashMap.set(chars[i], 1)
+            }
+        }
+        for(var [key, value] of hashMap) {
+            str += key.toString()
+            str += value.toString()
+        }
+        return str.split('').length
+
+        // var len = chars.length
+        // for (var i = 0, j = 0; j < len;) {
+        //     chars[i] = chars[j]
+        //     var temp = j
+        //     while (j < len && chars[i] === chars[j]) {
+        //         j++
+        //     }
+        //     i++
+        //     var dis = j - temp
+        //     if (dis > 1) {
+        //         var distance = Array.from('' + dis)
+        //         for (var k = 0; k < distance.length; k++) {
+        //             chars[i++] = distance[k]
+        //         }
+        //     }
+
+        // }
+        // return i
+
+    };
+    console.log(compress(["a", "a", "b", "b", "c", "c", "c"]))
+</script>
+
+</html>

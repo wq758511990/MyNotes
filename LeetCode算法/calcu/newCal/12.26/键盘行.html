@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var findWords = function (words) {
+        // var wordObj = { 'q': 0, 'w': 1, 'e': 2, 'r': 3, 't': 4, 'y': 5, 'u': 6, 'i': 7, 'o': 8, 'p': 9, 'a': 10, 's': 11, 'd': 12, 'f': 13, 'g': 14, 'h': 15, 'j': 16, 'k': 17, 'l': 18, 'z': 19, 'x': 20, 'c': 21, 'v': 22, 'b': 23, 'n': 24, 'm': 25 }
+        // var resArr = []
+        // var currArr = []
+        // for (var i = 0; i < words.length; i++) {
+        //     currArr = []
+        //     for (var j = 0; j < words[i].length; j++) {
+        //         currArr.push(wordObj[words[i][j].toLowerCase()])
+        //     }
+        //     var minNum = Math.min(...currArr)
+        //     var maxNum = Math.max(...currArr)
+        //     if ((minNum >= 0 && maxNum <= 9) || (minNum >= 10 && maxNum <= 18) || (minNum >= 19 && maxNum <= 25)) {
+        //         resArr.push(words[i])
+        //     }
+        // }
+        // return resArr
+
+        // 正则
+        // let regexp = /^([qwertyuiop]+|[asdfghjkl]+|[zxcvbnm]+)$/i;
+        // return words.filter(item => {
+        //     return regexp.test(item);
+        // })
+
+        // 解法1优化 值直接是第n - 1 行 不需要再另外操作
+        // every 每一项都为true 则返回true
+        // some 某一项为true 则返回true
+        let obj = {
+            q: 0,
+            w: 0,
+            e: 0,
+            r: 0,
+            t: 0,
+            y: 0,
+            u: 0,
+            i: 0,
+            o: 0,
+            p: 0,
+            a: 1,
+            s: 1,
+            d: 1,
+            f: 1,
+            g: 1,
+            h: 1,
+            j: 1,
+            k: 1,
+            l: 1,
+            z: 2,
+            x: 2,
+            c: 2,
+            v: 2,
+            b: 2,
+            n: 2,
+            m: 2
+        }
+        return words.filter((item) => {
+            var wStr = item.toLowerCase()
+            let num = obj[wStr[0]]
+            return wStr.split('').every(t => obj[t] == num)
+        })
+    };
+    console.log(findWords(["Hello", "Alaska", "Dad", "Peace"]))
+</script>
+
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var findShortestSubArray = function (nums) {
+        // var hashMap = new Map()
+        // var maxCount = 0
+        // var minLen = nums.length
+        // var curLen = 0
+        // var count = 0
+        // for (var i = 0; i < nums.length; i++) {
+        //     if (hashMap.has(nums[i])) {
+        //         hashMap.set(nums[i], hashMap.get(nums[i]) + 1)
+        //     } else {
+        //         hashMap.set(nums[i], 1)
+        //     }
+        //     maxCount = Math.max(hashMap.get(nums[i]), maxCount)
+        // }
+        // for (var [key, value] of hashMap) {
+        //     if (value == maxCount) {
+        //         curLen = nums.lastIndexOf(key) - nums.indexOf(key) + 1
+        //         minLen = Math.min(minLen, curLen)
+        //     }
+        // }
+        // return minLen
+
+        // 不好 对象索引比较慢？ 二次循环比上面三次还慢
+        // var map = {}
+        // var maxCount = 0
+        // var curCount = 1
+        // var minLen = 0
+        // var curLen = 0
+        // var count = 0
+        // var arr = nums.concat()
+        // arr.sort()
+        // for (var i = 0; i < arr.length; i++) {
+        //     if (arr[i] == arr[i + 1]) {
+        //         curCount++
+        //     } else {
+        //         map[arr[i]] = curCount
+        //         maxCount = Math.max(curCount, maxCount)
+        //         curCount = 1
+        //     }
+        // }
+        // for (var s in map) {
+        //     if (map[s] == maxCount) {
+        //         if (count == 0) {
+        //             minLen = nums.lastIndexOf(+s) - nums.indexOf(+s) + 1
+        //             count++
+        //         }
+        //         curLen = nums.lastIndexOf(+s) - nums.indexOf(+s) + 1
+        //         minLen = Math.min(minLen, curLen)
+        //     }
+        // }
+        // return minLen
+
+        // 用哈希表存数组，数组里保存出现的次数，索引
+        var hashMap = new Map()
+        var maxCount = 0
+        var minLen = 1
+        for (var i = 0; i < nums.length; i++) {
+            var arr = []
+            if (hashMap.has(nums[i])) {
+                arr = hashMap.get(nums[i])
+                arr[0]++
+                arr.push(i)
+                hashMap.set(nums[i], arr)
+                var tempArr = hashMap.get(nums[i])
+                var tempCount = tempArr[0]
+                var tempLen = tempArr[tempArr.length - 1] - tempArr[1] + 1
+                if(tempCount > maxCount) {
+                    maxCount = tempCount
+                    minLen = tempLen
+                }
+                if(tempCount == maxCount) {
+                    minLen = Math.min(tempLen, minLen)
+                }
+            } else {
+                hashMap.set(nums[i], [1, i])
+            }
+        }
+        console.log(hashMap)
+        return minLen
+    };
+    console.log(findShortestSubArray([2, 1]))
+</script>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var canConstruct = function (ransomNote, magazine) {
+        // 普通解法
+        // var arr = []
+        // for(var i = 0; i < magazine.length; i++) {
+        //     arr.push(magazine[i])
+        // }
+        // for(var j = 0; j < ransomNote.length; j++) {
+        //     var spliceIndex = arr.indexOf(ransomNote[j])
+        //     if(spliceIndex == -1) return false
+        //     arr.splice(spliceIndex, 1)
+        // }
+        // return true
+
+        // for(var i = 0; i < ransomNote.length; i++) {
+        //     var repIndex = magazine.indexOf(ransomNote[i])
+        //     if(repIndex == -1) return false
+        //     magazine = magazine.replace(ransomNote[i], '')
+        // }
+        // return true
+
+        // 排序之后直接indexOf
+        var rStr = ransomNote.split('').sort().join('')
+        var mStr = magazine.split('').sort().join('')
+        return mStr.indexOf(rStr) != -1
+    };
+
+    console.log(canConstruct('aa', 'aab'))
+</script>
+
+</html>

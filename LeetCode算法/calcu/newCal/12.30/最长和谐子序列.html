@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var findLHS = function (nums) {
+        // nums.sort((a, b) => a - b)
+        // if (nums[0] == nums[nums.length - 1]) return 0
+        // var maxCount = 0
+        // var preCount = 0
+        // var curCount = 0
+        // var currIndex = 0
+        // var preIndex = 0
+        // for (var i = 0; i < nums.length; i++) {
+        //     if (nums[i] == nums[currIndex]) {
+        //         preCount++
+        //     } else if (nums[i] - nums[currIndex] == 1) {
+        //         curCount++
+        //     } else {
+        //         currIndex = preIndex
+        //         maxCount = Math.max(preCount + curCount, maxCount)
+        //         preCount = curCount
+        //         curCount = 0
+        //     }
+
+        //     if (nums[i] != nums[i - 1]) {
+        //         preIndex = i
+        //     }
+        // }
+        // return Math.max(maxCount, preCount + curCount)
+
+        var hashMap = new Map()
+        var maxCount = 0
+        for (var i = 0; i < nums.length; i++) {
+            if (hashMap.has(nums[i])) {
+                hashMap.set(nums[i], hashMap.get(nums[i]) + 1)
+            } else {
+                hashMap.set(nums[i], 1)
+            }
+        }
+        for (var [key, value] of hashMap) {
+            if (hashMap.has(key + 1)) {
+                maxCount = Math.max(value + hashMap.get(key + 1), maxCount)
+            }
+        }
+        return maxCount
+    };
+    console.log(findLHS([1, 3, 5, 7, 9, 11, 13, 15, 17]))
+</script>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var detectCapitalUse = function (word) {
+        // var comArr = []
+        // var first = 0
+        // for (var i = 0; i < word.length; i++) {
+        //     comArr.push(word[i].charCodeAt())
+        // }
+        // if (comArr[0] >= 65 && comArr[0] <= 90) {
+        //     first = 0
+        // } else if (comArr[0] >= 97 && comArr[0] <= 122) {
+        //     first = 1
+        // }
+        // for (var j = 1; j < comArr.length; j++) {
+        //     if (first == 1) {
+        //         if (comArr[j] >= 65 && comArr[j] <= 90) return false
+        //     }
+        //     else if (first == 0) {
+        //         if (comArr[1] >= 65 && comArr[1] <= 90) {
+        //             if (j >= 2) {
+        //                 if (comArr[j] >= 65 && comArr[j] <= 90) {
+        //                     continue
+        //                 } else {
+        //                     return false
+        //                 }
+        //             }
+        //         } else if (comArr[1] >= 97 && comArr[1] <= 122) {
+        //             if (j >= 2) {
+        //                 if (comArr[j] >= 97 && comArr[j] <= 122) {
+        //                     continue
+        //                 } else {
+        //                     return false
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
+        // return true
+
+        // 保存大小写字母的数量
+        var upper = 0
+        var lower = 0
+        for (var i = 0; i < word.length; i++) {
+            if (word[i].charCodeAt() <= 90) {
+                upper++
+            } else {
+                lower++
+            }
+        }
+        if(upper == word.length) return true
+        if(lower == word.length) return true
+        if(upper == 1 && word[0].charCodeAt() <= 90) return true
+        return false
+    };
+    console.log(detectCapitalUse('USA'))
+</script>
+
+</html>

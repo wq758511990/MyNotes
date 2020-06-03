@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var findDisappearedNumbers = function (nums) {
+        // var resArr = []
+        // var i = 1
+        // var len = nums.length
+        // while (i <= len) {
+        //     if (nums.indexOf(i) == -1) {
+        //         resArr.push(i)
+        //     }
+        //     i++
+        // }
+        // return resArr
+
+        // 负号排序
+        var resArr = []
+        for (var i = 0; i < nums.length; i++) {
+            if (nums[nums[i] - 1] < 0) {
+                continue
+            } else {
+                nums[Math.abs(nums[i]) - 1] = -Math.abs(nums[Math.abs(nums[i]) - 1])
+            }
+        }
+        for (var j = 0; j < nums.length; j++) {
+            if (nums[j] > 0) {
+                resArr.push(j + 1)
+
+            }
+        }
+        return resArr
+    };
+    console.log(findDisappearedNumbers([4, 3, 2, 7, 7, 2, 3, 1]))
+</script>
+
+</html>

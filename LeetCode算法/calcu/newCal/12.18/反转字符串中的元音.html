@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var reverseVowels = function (s) {
+        // 这里哈希和数组的 indexOf 差不多
+        var hashMap = new Map()
+        hashMap.set('a')
+        hashMap.set('e')
+        hashMap.set('i')
+        hashMap.set('o')
+        hashMap.set('u')
+        hashMap.set('A')
+        hashMap.set('E')
+        hashMap.set('I')
+        hashMap.set('O')
+        hashMap.set('U')
+        var sArr = s.split('')
+        var left = 0
+        var right = s.length - 1
+        while (left < right) {
+            if (hashMap.has(s[left])) {
+                if (hashMap.has(s[right])) {
+                    var temp = sArr[left]
+                    sArr[left] = sArr[right]
+                    sArr[right] = temp
+                    left++
+                    right--
+                } else {
+                    right--
+                }
+            } else {
+                left++
+            }
+        }
+        return sArr.join('')
+    };
+    console.log(reverseVowels('hello'))
+</script>
+
+</html>

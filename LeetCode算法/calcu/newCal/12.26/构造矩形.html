@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var constructRectangle = function (area) {
+        var leftNum = Math.floor(Math.sqrt(area))
+        var resArr = []
+        while ((area / leftNum) != Math.floor(area / leftNum)) {
+            leftNum--
+        }
+        resArr.push(area / leftNum, leftNum)
+        return resArr
+    };
+    console.log(constructRectangle(5))
+</script>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var fib = function (N) {
+        // if(N <= 1) return N
+        // return fib(N - 2) + fib(N - 1)
+
+        if (N <= 1) return N
+        return momize(N)
+    };
+    var momize = function (N) {
+        var cacheArr = new Array()
+        cacheArr[0] = 0
+        cacheArr[1] = 1
+        for (var i = 2; i <= N; i++) {
+            cacheArr[i] = cacheArr[i - 2] + cacheArr[i - 1]
+        }
+        return cacheArr[N]
+    }
+
+    console.log(fib(5))
+</script>
+
+</html>

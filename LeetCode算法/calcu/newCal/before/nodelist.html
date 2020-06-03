@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+var mergeTwoLists = function(l1, l2) {
+    if(!l1){
+        return l2;
+    }
+    let prev = null;
+    let curr = l1;
+    while(curr&&l2){
+        if(l2.val <= curr.val){
+            let save = l2.next;
+            if(prev){
+                prev.next = l2;
+                l2.next = curr;
+                prev = l2;
+            }else{
+                l2.next = curr;
+                l1 = l2;
+                prev = l2;
+            }
+            l2 = save;
+        }else{
+            prev = curr;
+            curr = curr.next;
+        }
+    }
+    if(l2){
+        prev.next = l2;
+    }
+    return l1;
+};
+
+console.log(mergeTwoLists('1->2->4', '1->3->4'))
+</script>
+</html>

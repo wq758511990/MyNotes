@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var isValid = function (s) {
+        // if((s.indexOf('(') != -1 && s.indexOf(')') == -1) || (s.indexOf(')') != -1 && s.indexOf('(') == -1)) return false
+        // else if((s.indexOf('{') != -1 && s.indexOf('}') == -1) || (s.indexOf('}') != -1 && s.indexOf('{') == -1)) return false
+        // else if((s.indexOf('[') != -1 && s.indexOf(']') == -1) || (s.indexOf(']') != -1 && s.indexOf('[') == -1)) return false
+        // // var arr = s.split('')
+        // // for(var i = 0; i < arr.length; i++) {
+        // // }
+        // var inst = s.indexOf(')') - s.indexOf('(')
+        // var inst1 = s.indexOf('}') - s.indexOf('{')
+        // var inst2 = s.indexOf(']') - s.indexOf('[')
+        // // console.log(inst, inst1, inst2)
+        // if((s.indexOf(')') != -1 && inst % 2 == 0) || (s.indexOf('}') != -1 && inst1 % 2 == 0) || (s.indexOf(']') != -1 && inst2 % 2 == 0)) {
+        //     return false
+        // } else {
+        //     return true
+        // }
+
+        // var map = {
+        //     "(": ")",
+        //     "{": "}",
+        //     "[": "]"
+        // }
+        // var tempArr = []
+        // for (let ch of s) {
+        //     if (ch in map) {
+        //         tempArr.push(ch)
+        //     } else {
+        //         if (ch != map[tempArr.pop()]) return false
+        //     }
+        // }
+        // return !tempArr.length
+
+        if (s.length % 2 != 0) {
+            return false
+        }
+        while (s.length > 0) {
+            var temp = s   
+            s = s.replace('()', '')
+            s = s.replace('{}', '')
+            s = s.replace('[]', '')
+            if(s == temp) return false
+        }
+        return true
+        
+    };
+
+    console.log(isValid("()[]{}"))
+</script>
+
+</html>

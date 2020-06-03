@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var isSubsequence = function (s, t) {
+        // if (s == '') return true
+        // for (var i = 0; i < t.length; i++) {
+        //     if (s.indexOf(t[i]) == -1) {
+        //         t = t.replace(t[i], '')
+        //         i == 0 ? 0 : i--
+        //     }
+        // }
+        // console.log(t)
+        // return s == t
+
+        if (s.length == 0) return true
+        if (t.length == 0) return false
+        var i = 0
+        var index = 0
+        while (i < t.length && index < s.length) {
+            if (t[i] == s[index]) {
+                index ++
+            }
+            i++
+        }
+        return index == s.length
+
+
+    };
+
+    console.log(isSubsequence("twn",
+        "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxtxxxxxxxxxxxxxxxxxxxxwxxxxxxxxxxxxxxxxxxxxxxxxxn"))
+</script>
+
+</html>

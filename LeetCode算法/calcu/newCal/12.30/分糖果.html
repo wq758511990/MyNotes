@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var distributeCandies = function (candies) {
+        // var hashMap = new Map()
+        // var maxType = candies.length / 2
+        // for(var i = 0; i < candies.length; i++) {
+        //     if(hashMap.has(candies[i])) {
+        //         hashMap.set(candies[i], hashMap.get(candies[i]) + 1)
+        //     } else {
+        //         hashMap.set(candies[i], 1)
+        //     }
+        // }
+        // return Math.min(hashMap.size, maxType)
+
+        var hashMap = new Map()
+        var left = 0
+        var right = candies.length - 1
+        var maxType = candies.length / 2
+        while (left < right) {
+            if (hashMap.has(candies[left])) {
+                hashMap.set(candies[left], hashMap.get(candies[left]) + 1)
+            } else {
+                hashMap.set(candies[left], 1)
+            }
+
+            if (hashMap.has(candies[right])) {
+                hashMap.set(candies[right], hashMap.get(candies[right]) + 1)
+            } else {
+                hashMap.set(candies[right], 1)
+            }
+            left ++
+            right --
+        }
+        return hashMap.size > maxType ? maxType : hashMap.size
+
+        // candies.sort()
+        // var maxType = candies.length / 2
+        // var count = 0
+        // for (var i = 0; i < candies.length; i++) {
+        //     if (candies[i] != candies[i - 1]) {
+        //         count++
+        //     }
+        // }
+        // return Math.min(maxType, count)
+    };
+    console.log(distributeCandies([1, 1, 2, 2, 3, 3]))
+</script>
+
+</html>

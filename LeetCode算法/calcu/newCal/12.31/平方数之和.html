@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var judgeSquareSum = function (c) {
+        // 超出限制 2147483645
+        // var maxNum = parseInt(Math.sqrt(c)) + 1
+        // for(var i = 0; i < maxNum; i++) {
+        //     for(var j = 0; j < maxNum; j++) {
+        //         if(i * i + j * j == c) {
+        //             return true
+        //         }
+        //     }
+        // }
+        // return false
+
+        // 双指针
+        var maxNum = parseInt(Math.sqrt(c)) + 1
+        var left = 0
+        var right = maxNum
+        while (left < right) {
+            var total = left * left + right * right
+            if (total < c) {
+                left++
+            } else if (total > c) {
+                right--
+            } else {
+                return true
+            }
+        }
+        return left * left + right * right == c ? true : false
+    };
+    console.log(judgeSquareSum(2147483645))
+</script>
+
+</html>

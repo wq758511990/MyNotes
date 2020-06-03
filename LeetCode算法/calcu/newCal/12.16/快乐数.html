@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // var happyfun = function (n, arr) {
+    //     // 暴利递归解法 判断跳出循环条件
+    //     if (arr.indexOf(n) == -1) {
+    //         arr.push(n)
+    //     } else {
+    //         return false
+    //     }
+    //     var str = n.toString()
+    //     var res = 0
+    //     for (var i = 0; i < str.length; i++) {
+    //         res += str[i] * str[i]
+    //     }
+    //     while (res > 1) {
+    //         res = happyfun(res, arr)
+    //     }
+    //     return res == 1 ? true : false
+    // }
+    // var isHappy = function (n) {
+    //     var arr = []
+    //     return happyfun(n, arr)
+    // };
+    
+    // 快慢指针 快指针执行两次 慢指针执行一次， 当快指针追上慢指针时 若结果为1 则为快乐数，否则为unhappy number
+    function isHappy(n) {
+        var slow = n
+        var fast = n
+        do {
+            slow = bitSquareSum(slow);
+            fast = bitSquareSum(fast);
+            fast = bitSquareSum(fast);
+        } while (slow != fast);
+
+        return slow == 1;
+    }
+
+    function bitSquareSum(n) {
+        var sum = 0;
+        while (n > 0) {
+            var bit = n % 10;
+            sum += bit * bit;
+            n = parseInt(n / 10)
+        }
+        return sum;
+    }
+    console.log(isHappy(2))
+</script>
+
+</html>

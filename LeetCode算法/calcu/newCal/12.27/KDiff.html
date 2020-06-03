@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var findPairs = function (nums, k) {
+        if(k < 0) return 0
+        // var difCount = 0
+        // var hashMap = new Map()
+        // for (var i = 0; i < nums.length; i++) {
+        //     for (var j = i + 1; j < nums.length; j++) {
+        //         if ((Math.abs(nums[i] - nums[j]) == k) && !hashMap.has(nums[j])) {
+        //             difCount++
+        //             hashMap.set(nums[j], 1)
+        //         }
+        //     }
+        // }
+        // return difCount
+        var aSet = new Set()
+        var bSet = new Set()
+        for (i of nums) {
+            if (aSet.has(i - k)) {
+                bSet.add(i - k)
+            }
+            if(aSet.has(i + k)) {
+                bSet.add(i)
+            }
+            aSet.add(i)
+        }
+        return bSet.size
+    };
+    console.log(findPairs([1, 1, 1, 2, 1],
+        1))
+</script>
+
+</html>

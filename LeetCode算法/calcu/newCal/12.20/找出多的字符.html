@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var findTheDifference = function (s, t) {
+        // var hashMap = new Map()
+        // for (var i = 0; i < t.length; i++) {
+        //     if (hashMap.has(t[i])) {
+        //         hashMap.delete(t[i])
+        //     } else {
+        //         hashMap.set(t[i], 0)
+        //     }
+
+        //     if (i < s.length) {
+        //         if (hashMap.has(s[i])) {
+        //             hashMap.delete(s[i])
+        //         } else {
+        //             hashMap.set(s[i], 0)
+        //         }
+        //     }
+        // }
+        // console.log(hashMap)
+        // for(var [key, value] of hashMap) {
+        //     if(value == 0) {
+        //         return key
+        //     }
+        // }
+
+        // 将字母相减 多出来的数字即多出来的字符
+        var sum = 0
+        for(var i = 0; i < t.length; i++) {
+            sum += t[i].charCodeAt()
+            if(i < s.length) {
+                sum -= s[i].charCodeAt()
+            }
+        }
+        return String.fromCharCode(sum)
+    };
+
+    console.log(findTheDifference('acac', 'aaccc'))
+</script>
+
+</html>

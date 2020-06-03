@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+
+    var climbStairs = function (n) {
+        if (n == 1) return 1
+        else if (n == 2) return 2
+        // 递归计算量太大 40以上需要时间太多
+        // else return climbStairs(n - 2) + climbStairs(n - 1)
+
+        // 不用递归直接顺序算下来
+        else {
+            var res = 0
+            var a = 1
+            var b = 2
+            var k = 3
+            while(k <= n) {
+                res = a + b
+                a = b
+                b = res
+                k++
+            }
+            return res
+        }
+
+    };
+    console.log(climbStairs(5))
+
+
+</script>
+
+</html>

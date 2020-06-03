@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var isIsomorphic = (s, t) => {
+        // if (s === t || s === '') return true
+        // let mapS = new Map(), mapT = new Map()
+        // for (let i = 0; i < s.length; i++) {
+        //     if (mapS.has(s[i]) || mapT.has(t[i])) {
+        //         console.log(mapS.get(s[i]))
+        //         console.log(mapT.get(t[i]))
+        //         if (mapS.get(s[i]) !== mapT.get(t[i])) return false
+        //     }
+        //     mapS.set(s[i], i)
+        //     mapT.set(t[i], i)
+        // }
+        // return true
+        
+        // 直接字符串寻找 若s[i + 1] 之后找到了与s[i]相同的字符串且index != t[i + 1] 之后与t[i]相同字符的index 则为false 否则为true　
+        if (s === t || s === '') return true
+        for (let i = 0; i < s.length - 1; i++) {
+            if (s.indexOf(s[i], i + 1) !== t.indexOf(t[i], i + 1)) return false
+        }
+        return true
+    }
+    console.log(isIsomorphic('foo', 'bar'))
+</script>
+
+</html>

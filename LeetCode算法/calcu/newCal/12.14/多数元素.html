@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var majorityElement = function (nums) {
+        // 排序之后 找出现最大的次数 一次遍历 时间复杂度O(n)
+        // var arr = nums.sort()
+        // var start = 0
+        // for(var i = 0; i < arr.length; i++) {
+        //     if(arr[i] != arr[i + 1]) {
+        //         if(i + 1 - start > arr.length / 2) {
+        //             return arr[i]
+        //         }
+        //         start = i
+        //     }
+        // }
+
+        // if (nums.length == 1) {
+        //     return nums[0]
+        // }
+        // var hashMap = new Map()
+        // for (var index in nums) {
+        //     if (!(hashMap.has(nums[index]))) {
+        //         hashMap.set(nums[index], 1)
+        //     } else {
+        //         var val = hashMap.get(nums[index])
+        //         if (val + 1 > nums.length / 2) return nums[index]
+        //         hashMap.set(nums[index], val += 1)
+        //     }
+        // }
+
+        // 因为多数元素 长度大于 nums.length / 2  所以排序之后 直接返回 中间下标的值
+        // var arr = nums.sort()
+        // var index = arr.length % 2 == 0 ? arr.length / 2 : (arr.length - 1) / 2
+        // return arr[index]
+
+        // 投票求众数法， 由于多数 长度大于 nums.length / 2 假设首个元素即众数 遇到相等的 count++ 不等的 count -- 若count 为0 则可忽略前面所有的 令count = nums[i + 1]
+        var maxNum = nums[0]
+        var count = 1
+        for (var i = 1; i < nums.length; i++) {
+            if (nums[i] == maxNum) count++
+            else count--
+            if (count == 0) {
+                maxNum = nums[i + 1]
+                count = 1
+                i++
+            }
+        }
+        return maxNum
+    };
+    console.log(majorityElement([2, 2, 1, 1, 1, 2, 2]))
+</script>
+
+</html>

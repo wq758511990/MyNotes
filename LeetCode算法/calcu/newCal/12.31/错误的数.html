@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var findErrorNums = function (nums) {
+        // nums.sort((a, b) => a - b)
+        // var errNum = 0
+        // var corrNum = 0
+        // var resArr = []
+        // var sum = 0
+        // var totalSum = (((1 + nums.length) * nums.length) / 2)
+        // for (var i = 0; i < nums.length; i++) {
+        //     sum += nums[i]
+        //     if (nums[i + 1] == nums[i]) {
+        //         errNum = nums[i]
+        //     }
+        // }
+        // corrNum = totalSum - sum + errNum
+        // resArr.push(errNum, corrNum)
+        // return resArr
+
+        var arr = new Array(10001).fill(0)
+        var res = []
+        for (var i = 0; i < nums.length; i++) {
+            arr[nums[i]]++
+        }
+        for (var j = 1; j <= nums.length; j++) {
+            if (arr[j] == 2) {
+                res[0] = j
+            } else if (arr[j] == 0) {
+                res[1] = j
+            }
+        }
+        return res
+    };
+    console.log(findErrorNums([1, 5, 3, 2, 2, 7, 6, 4, 8, 9]))
+</script>
+
+</html>

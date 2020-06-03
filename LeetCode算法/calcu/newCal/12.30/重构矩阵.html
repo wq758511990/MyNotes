@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var matrixReshape = function (nums, r, c) {
+        if(c == undefined) c = 1
+        if(r == undefined) r = 1
+        if (nums.length * nums[0].length != r * c) return nums
+        var resArr = []
+        resArr.length = r
+        var currCount = 0
+        resArr[currCount] = new Array()
+        for (var i = 0; i < nums.length; i++) {
+            for (var j = 0; j < nums[i].length; j++) {
+                if (resArr[currCount].length < c) {
+                    resArr[currCount].push(nums[i][j])
+                } else {
+                    currCount++
+                    resArr[currCount] = new Array()
+                    resArr[currCount].push(nums[i][j])
+                }
+            }
+        }
+        return resArr
+    };
+    console.log(matrixReshape([[1, 2],[3, 4]], 4))
+</script>
+
+</html>

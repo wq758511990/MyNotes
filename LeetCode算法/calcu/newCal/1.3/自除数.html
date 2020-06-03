@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var selfDividingNumbers = function (left, right) {
+        const arr = []
+        for (let i = left; i <= right; i++) {
+            if (i < 10) {
+                arr.push(i)
+            } else {
+                const items = (i + '').split('')
+                let pass = true
+                items.forEach(item => {
+                    if (i % item != 0) {
+                        pass = false
+                    }
+                })
+                if (pass) {
+                    arr.push(i)
+                }
+            }
+        }
+        return arr
+    };
+    console.log(selfDividingNumbers(1, 22))
+</script>
+
+</html>

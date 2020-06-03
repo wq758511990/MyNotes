@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var findMaxConsecutiveOnes = function (nums) {
+        // 最后一个1的计数问题，要么范围到nums.length 要么 最后return Math.max(maxCount, currCount)
+        if (nums.length == 0) return 0
+        var maxCount = 0
+        var currCount = 0
+        for (var i = 0; i <= nums.length; i++) {
+            if (nums[i] == 1) {
+                currCount++
+            } else {
+                maxCount = Math.max(maxCount, currCount)
+                currCount = 0
+            }
+        }
+        return maxCount
+    };
+    console.log(findMaxConsecutiveOnes([0, 1]))
+</script>
+
+</html>

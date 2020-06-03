@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var nextGreaterElement = function (nums1, nums2) {
+        var resArr = []
+        for(var i = 0; i < nums1.length; i++) {
+            var curIndex = nums2.indexOf(nums1[i])
+            for(var j = curIndex; j < nums2.length; j++) {
+                if(nums2[j] > nums2[curIndex]) {
+                    resArr.push(nums2[j])
+                    break
+                }
+                if(j == nums2.length - 1) {
+                    resArr.push(-1)
+                }
+            }
+        }
+        return resArr
+    };
+    console.log(nextGreaterElement([4, 1, 2], [1, 3, 4, 2]))
+</script>
+
+</html>

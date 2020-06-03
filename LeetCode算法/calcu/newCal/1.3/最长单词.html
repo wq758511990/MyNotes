@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var longestWord = function (words) {
+        // 面向测试编程 。。。 
+        // words.sort((a, b) => {
+        //     if (a.length == b.length) {
+        //         for (let i = 0; i < a.length; ++i) {
+        //             if (a[i] != b[i]) return b[i].charCodeAt() - a[i].charCodeAt();
+        //         }
+        //     } else return a.length - b.length;
+        // })
+        // var hashMap = new Map()
+        // var curCount = 1
+        // var maxCount = 0
+        // for (var i = 0; i < words.length; i++) {
+        //     if (words[i].length == 1) {
+        //         hashMap.set(words[i], words[i])
+        //         maxCount = Math.max(curCount, maxCount)
+        //         curCount = 1
+        //     } else if (hashMap.has(words[i][0])) {
+        //         if ((hashMap.get(words[i][0]) == words[i].substring(0, words[i].length - 1)) || (words[i].length == hashMap.get(words[i][0]).length && words[i - 1].length > hashMap.get(words[i][0]).length && words[i + 1].substring(0, words[i + 1].length - 1) == words[i])) {
+        //             hashMap.set(words[i][0], words[i])
+        //             let preLen = hashMap.get(words[i][0]).length
+        //             let curLen = words[i].length
+        //             curCount = preLen == curCount ? curCount : curCount + 1
+        //         }
+        //     }
+        // }
+        // maxCount = Math.max(curCount, maxCount)
+        // for (var [key, value] of hashMap) {
+        //     if (value.length == maxCount) {
+        //         return value
+        //     }
+        // }
+
+        //按长度排序，如果长度相同，按字典序降序排列,
+        let map = new Map();
+        words.sort(function (a, b) {
+            console.log(a, b)
+            if (!map.has(a)) map.set(a, 1);
+            if (!map.has(b)) map.set(b, 1);
+            if (a.length == b.length) {
+                for (let i = 0; i < a.length; ++i) {
+                    if (a[i] != b[i]) return b[i].charCodeAt() - a[i].charCodeAt();
+                }
+            } else return a.length - b.length;
+        });
+        //字典序的降序排列保证同长度下满足条件的第一个一定是字典序最小的
+        for (let i = words.length - 1; i >= 0; --i) {
+            let flag = true;
+            //如果到了一个长度的字符必然是true
+            for (let j = 0; j < words[i].length - 1; ++j) {
+                let temp = words[i].substr(0, j + 1);
+                if (!map.has(temp)) flag = false;
+            }
+            if (flag) return words[i];
+        }
+        return "";
+    };
+    console.log(longestWord(["wor", "w", "wo", 'wd', "worl", "world"]))
+</script>
+
+</html>

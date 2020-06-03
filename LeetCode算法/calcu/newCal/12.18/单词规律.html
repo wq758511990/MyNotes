@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var wordPattern = function (pattern, str) {
+        var strArr = str.split(' ')
+        if (pattern.length != strArr.length) return false
+        var hasMap = new Map()
+        var pCount = 0
+        var sCount = 0
+        for(var j = 0; j < pattern.length; j++) {
+            if(pattern[j] != pattern[j + 1]) pCount ++
+            if(strArr[j] != strArr[j + 1]) sCount ++
+        }
+        if(pCount != sCount) return false
+        for (var i = 0; i < pattern.length; i++) {
+            if (hasMap.has(pattern[i]) && hasMap.get(pattern[i]) != strArr[i]) {
+                return false
+            }
+            // else if (!hasMap.has(pattern[i]) && hasMap.values().containsValue(strArr[i])) {
+            //     return false
+            // }
+            hasMap.set(pattern[i], strArr[i])
+        }
+        return true
+    };
+    console.log(wordPattern('abba', "cat cat cat cat"))
+</script>
+
+</html>

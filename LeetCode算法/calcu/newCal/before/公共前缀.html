@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // var longestCommonPrefix = function (strs) {
+    //     var str = strs[0]
+    //     var curIndex = 0
+    //     var comIndex = 0
+    //     var comStr = ''
+    //     if(strs.length == 0) {
+    //         return ""
+    //     } else if(strs.length == 1) {
+    //         return strs[0]
+    //     }
+
+    //     for(var i = 1; i < strs.length; i++) {
+    //         comStr = ''
+    //         comIndex = 0
+    //         if(strs[i].indexOf(str[0]) == 0) {
+    //             comStr += str[0]
+    //             comIndex += 1
+    //             for(j = 1; j < strs[i].split('').length; j++) {
+    //                 comStr += str[j]
+    //                 if(strs[i].indexOf(comStr) == 0) {
+    //                     comIndex ++
+    //                     continue
+    //                 } else {
+    //                     break;
+    //                 }
+    //             }
+    //         } else {
+    //             return ""
+    //         }
+    //         console.log(comIndex)
+    //         curIndex = curIndex == 0 ? comIndex : Math.min(curIndex, comIndex)
+    //     }
+    //     return str.slice(0, curIndex)
+    // };
+
+    var longestCommonPrefix = function (strs) {
+        var str = ''
+        if (!strs.length) return str
+        for (var i = 0; i < strs[0].length; i++) {
+            for (j = 1; j < strs.length; j++) {
+                if (strs[j][i] != strs[0][i]) return str
+            }
+            str += strs[0][i]
+        }
+        return str
+    };
+
+    console.log(longestCommonPrefix(["abca", "aba", "aaab"]))
+</script>
+
+</html>

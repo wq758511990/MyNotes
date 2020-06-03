@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var findRestaurant = function (list1, list2) {
+        var hashMap = new Map()
+        var resArr = []
+        var res = Infinity
+        for (var i = 0; i < list1.length; i++) {
+            if (hashMap.has(list1[i])) {
+                hashMap.set(list1[i], hashMap.get(list1[i]) + i)
+            } else {
+                hashMap.set(list1[i], i)
+            }
+        }
+
+        for (var j = 0; j < list2.length; j++) {
+            if (hashMap.has(list2[j])) {
+                hashMap.set(list2[j], hashMap.get(list2[j]) + j)
+            } else {
+                hashMap.set(list2[j], j)
+            }
+        }
+        resArr = Array.from(hashMap)
+        for (var i = 0; i < resArr.length; i++) {
+            if (resArr[i][1] == i || resArr[i][1] == i - list1.length) {
+                hashMap.delete(resArr[i][0])
+                continue
+            } else {
+                res = Math.min(res, resArr[i][1])
+            }
+        }
+        var arr = []
+        for (var [key, value] of hashMap) {
+            if (value == res) {
+                arr.push(key)
+            }
+        }
+        return arr
+    };
+    console.log(findRestaurant(["Shogun", "Tapioca Express", "Burger King", "KFC"],
+        ["KFC", "Burger King", "Tapioca Express", "Shogun"]))
+</script>
+
+</html>

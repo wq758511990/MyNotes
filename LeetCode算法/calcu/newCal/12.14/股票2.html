@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var maxProfit = function (prices) {
+        // 可以无限次交易
+        // var profit = 0
+        // for (var i = 1; i < prices.length; i++) {
+        //     var dis = prices[i] - prices[i - 1]
+        //     if (dis > 0) {
+        //         profit += dis
+        //     }
+        // }
+
+        var profit = 0
+        var valley = prices[0]
+        var peak = prices[0]
+        var i = 0
+        while (i < prices.length - 1) {
+            while (i < prices.length - 1 && prices[i] >= prices[i + 1]) {
+                i++
+            }
+            valley = prices[i]
+
+            while (i < prices.length - 1 && prices[i] <= prices[i + 1]) {
+                i++
+            }
+            peak = prices[i]
+
+            profit += peak - valley
+        }
+        return profit
+
+        // var i = 0;
+        // var valley = prices[0];
+        // var peak = prices[0];
+        // var maxprofit = 0;
+        // while (i < prices.length - 1) {
+        //     while (i < prices.length - 1 && prices[i] >= prices[i + 1])
+        //         i++;
+        //     valley = prices[i];
+        //     while (i < prices.length - 1 && prices[i] <= prices[i + 1])
+        //         i++;
+        //     peak = prices[i];
+        //     maxprofit += peak - valley;
+        // }
+        // return maxprofit;
+    };
+    console.log(maxProfit([1, 2, 3, 4, 5]))
+</script>
+
+</html>

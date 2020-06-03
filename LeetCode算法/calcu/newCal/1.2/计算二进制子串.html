@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var countBinarySubstrings = function (s) {
+        // var sum = 0
+        // var cur = 1
+        // var prev = 0
+        // for (var i = 0; i < s.length; i++) {
+        //     if (s[i] == s[i + 1]) {
+        //         cur++
+        //     } else {
+        //         sum += Math.min(prev, cur)
+        //         prev = cur
+        //         cur = 1
+        //     }
+        // }
+        // sum += Math.min(prev, cur)
+
+        // 当prev >= cur 的时候就可以 + 1 每次循环都判断
+        // 注意这么做的话 i的范围取到s.length - 1 即可，因为不需要判断最后一个值
+        var sum = 0
+        var cur = 1
+        var prev = 0
+        for (var i = 0; i < s.length - 1; i++) {
+            if (s[i] == s[i + 1]) {
+                cur++
+            } else {
+                prev = cur
+                cur = 1
+            }
+            if (prev >= cur) sum++
+        }
+        return sum
+    };
+    console.log(countBinarySubstrings('00110'))
+</script>
+
+</html>
