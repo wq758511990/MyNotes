@@ -327,6 +327,7 @@ function ProtalTest(props) {
 
     // React 并*没有*创建一个新的 div。它只是把子元素渲染到 `domNode` 中。
     // `domNode` 是一个可以在任何位置的有效 DOM 节点。
+    const domNode = <div>123</div>
     return ReactDom.createPortal(
         this.props.children,
         domNode
