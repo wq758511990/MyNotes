@@ -1,4 +1,4 @@
-import React, { Fragment, Suspense } from "react"
+import React, { Fragment, Suspense, Profiler } from "react"
 import ReactDom from "react-dom"
 // import { OtherComponent } from './OtherComponent'; import 只能在js顶部
 
@@ -334,7 +334,240 @@ function ProtalTest(props) {
     )
 }
 
+// 一个从 portal 内部触发的事件会一直冒泡至包含 React 树的祖先，即便这些元素并不是 DOM 树 中的祖先。
+
+const appRoot = document.getElementById('appRoot')
+const anotherRoot = document.getElementById('anotherRoot')
+
+class Modal extends React.Component {
+    constructor(props) {
+        super(props)
+        this.el = document.createElement('div')
+    }
+
+    componentDidMount() {
+        // 在 Modal 的所有子元素被挂载后，
+        // 这个 portal 元素会被嵌入到 DOM 树中，
+        // 这意味着子元素将被挂载到一个分离的 DOM 节点中。
+        // 如果要求子组件在挂载时可以立刻接入 DOM 树，
+        // 例如衡量一个 DOM 节点，
+        // 或者在后代节点中使用 ‘autoFocus’，
+        // 则需添加 state 到 Modal 中，
+        // 仅当 Modal 被插入 DOM 树中才能渲染子元素。
+        anotherRoot.appendChild(this.el)
+    }
+
+    componentWillUnmount() {
+        anotherRoot.removeChild(this.el);
+    }
+
+    render() {
+        return ReactDom.createPortal(
+            this.props.children,
+            this.el
+        )
+    }
+}
+
+class Parent extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            clicks: 0
+        }
+    }
+
+    handleClick() {
+        this.setState(state => ({
+            clicks: state.clicks + 1
+        }))
+    }
+
+    childBack() {
+        // id, // 发生提交的 Profiler 树的 “id”
+        // phase, // "mount" （如果组件树刚加载） 或者 "update" （如果它重渲染了）之一
+        // actualDuration, // 本次更新 committed 花费的渲染时间
+        // baseDuration, // 估计不使用 memoization 的情况下渲染整颗子树需要的时间
+        // startTime, // 本次更新中 React 开始渲染的时间
+        // commitTime, // 本次更新中 React committed 的时间
+        // interactions // 属于本次更新的 interactions 的集合
+
+
+        // id: string - 发生提交的 Profiler 树的 id。 如果有多个 profiler，它能用来分辨树的哪一部分发生了“提交”。
+        // phase: "mount" | "update" - 判断是组件树的第一次装载引起的重渲染，还是由 props、state 或是 hooks 改变引起的重渲染。
+        // actualDuration: number - 本次更新在渲染 Profiler 和它的子代上花费的时间。 这个数值表明使用 memoization 之后能表现得多好。（例如 React.memo，useMemo，shouldComponentUpdate）。 理想情况下，由于子代只会因特定的 prop 改变而重渲染，因此这个值应该在第一次装载之后显著下降。
+        // baseDuration: number - 在 Profiler 树中最近一次每一个组件 render 的持续时间。 这个值估计了最差的渲染时间。（例如当它是第一次加载或者组件树没有使用 memoization）。
+        // startTime: number - 本次更新中 React 开始渲染的时间戳。
+        // commitTime: number - 本次更新中 React commit 阶段结束的时间戳。 在一次 commit 中这个值在所有的 profiler 之间是共享的，可以将它们按需分组。
+        // interactions: Set - 当更新被制定时，“interactions” 的集合会被追踪。（例如当 render 或者 setState 被调用时）。
+
+
+        for (var i = 0; i < arguments.length; i++) {
+            console.log('i', arguments[i])
+        }
+    }
+
+    render() {
+        return (
+            <div onClick={() => this.handleClick()}>
+                <p>Number of clicks: {this.state.clicks}</p>
+                <p>
+                    Open up the browser DevTools
+                    to observe that the button
+                    is not a child of the div
+                    with the onClick handler.
+            </p>
+                <Modal>
+                    <Profiler id="Child" onRender={(e, v, a, b, c, d, f) => this.childBack(e, v, a, b, c, d, f)}>
+                        <Child />
+                    </Profiler>
+                </Modal>
+            </div>
+        )
+    }
+}
+
+function Child() {
+    // 这个按钮的点击事件会冒泡到父元素
+    // 因为这里没有定义 'onClick' 属性
+    return (
+        <div className="modal">
+            <button>click</button>
+        </div>
+    )
+}
+
+// React 的 diff 算法 https://react.docschina.org/docs/reconciliation.html
+
+
+//Refs 是使用 React.createRef() 创建的，并通过 ref 属性附加到 React 元素。在构造组件时，通常将 Refs 分配给实例属性，以便可以在整个组件中引用它们。
+
+// 当 ref 被传递给 render 中的元素时，对该节点的引用可以在 ref 的 current 属性中被访问。
+
+class MyCom extends React.Component {
+    constructor(props) {
+        super(props)
+        this.myRef = React.createRef()
+    }
+
+    render() {
+        return (
+            <div ref={this.myRef}></div>
+        )
+    }
+}
+
+class CustomTextInput extends React.Component {
+    constructor(props) {
+        super(props)
+        this.textInput = React.createRef()
+    }
+
+    focusTextInput() {
+        this.textInput.current.focus()
+    }
+
+    render() {
+        return (
+            <div>
+                <input
+                    type="text"
+                    ref={this.textInput}
+                />
+                <input
+                    type="button"
+                    value="focus the text input"
+                    onClick={() => this.focusTextInput()}
+                />
+            </div>
+        )
+    }
+}
+// 默认情况下，你不能在函数组件上使用 ref 属性，因为它们没有实例：
+
+
+// 组件是 React 代码复用的主要单元，但如何分享一个组件封装到其他需要相同 state 组件的状态或行为并不总是很容易。
+// 例如，以下组件跟踪 Web 应用程序中的鼠标位置：
+
+// class MouseTracker extends React.Component {
+//     constructor(props) {
+//         super(props)
+//         this.state = {
+//             x: 0,
+//             y: 0
+//         }
+//     }
+
+//     handleMouseMove(e) {
+//         this.setState({
+//             x: e.clientX,
+//             y: e.clientY
+//         })
+//     }
+
+//     render() {
+//         return (
+//             <div style={{height: "100vh"}} onMouseMove={(e) => this.handleMouseMove(e)}>
+//                 <h1>移动鼠标!</h1>
+//                 <p>当前的鼠标位置是 ({this.state.x}, {this.state.y})</p>
+//             </div>
+//         )
+//     }
+// }
+
+// 现在的问题是：我们如何在另一个组件中复用这个行为？换个说法，若另一个组件需要知道鼠标位置，我们能否封装这一行为，以便轻松地与其他组件共享它？？
+
+class Cat extends React.Component {
+    constructor(props) {
+        super(props)
+    }
+    render() {
+        const mouse = this.props.mouse
+        return (
+            <img alt="" src="https://tse2-mm.cn.bing.net/th/id/OIP.mCqrCW7WDxap4s4W19ouUwHaF0?w=214&h=180&c=7&o=5&pid=1.7" style={{ position: 'absolute', left: mouse.x, top: mouse.y }} />
+        );
+    }
+}
+
+class Mouse extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            x: 0,
+            y: 0
+        }
+    }
+
+    handleMouseMove(e) {
+        this.setState({
+            x: e.clientX,
+            y: e.clientY
+        })
+    }
+
+    render() {
+        return (
+            <div style={{ height: '100vh' }} onMouseMove={(e) => this.handleMouseMove(e)}>
+                {this.props.render(this.state)}
+            </div>
+        )
+    }
+}
+
+class MouseTracker extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1>移动鼠标！</h1>
+                <Mouse render={mouse => (
+                    <Cat mouse={mouse} />
+                )} />
+            </div>
+        )
+    }
+}
+
 ReactDom.render(
-    <MyAppSec />,
+    <MouseTracker />,
     document.getElementById('root')
 )
