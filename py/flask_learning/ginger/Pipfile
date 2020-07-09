@@ -10,7 +10,7 @@ flask-wtf = "==0.14.2"
 cymysql = "==0.9.1"
 flask-cors = "==2.1.0"
 flask-httpauth = "==2.7.0"
-requests = "==2.18.4"
+requests = "==2.20.0"
 email-validator = "*"
 wtforms = {extras = ["email"],version = "*"}
 
