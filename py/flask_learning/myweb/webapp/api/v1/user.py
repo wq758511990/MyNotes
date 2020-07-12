@@ -7,7 +7,3 @@ def getUser(uid) :
     User.create_user()
     return 'a str from user_get' + str(uid)
 
-
-@api.route('/update', methods=['POST'])
-def updateUser() :
-    return 'str from user_post'

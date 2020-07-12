@@ -9,6 +9,7 @@ verify_ssl = true
 flask = "*"
 flask-sqlalchemy = "*"
 cymysql = "*"
+wtforms = {extras = ["email"],version = "*"}
 
 [requires]
 python_version = "3.6"
