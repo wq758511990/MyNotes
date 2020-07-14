@@ -1,12 +1,15 @@
-from sqlalchemy import Column, Integer, String, SmallInteger, orm
+from sqlalchemy import Column, Integer, String, SmallInteger, orm, DateTime
 from .base import Base, db
 from werkzeug.security import generate_password_hash, check_password_hash
 from webapp.libs.error_code import AuthFailed
+from datetime import datetime
+
 class User(Base) :
     id = Column(Integer, primary_key=True)
-    emamil = Column(String(24), unique=True, nullable=False)
+    email = Column(String(24), unique=True, nullable=False)
     nickname = Column(String(24), unique=True)
     auth = Column(SmallInteger, default=1)
+    # create_time = Column(Integer)
     _password = Column('password', String(100))
 
     @orm.reconstructor
@@ -15,27 +18,29 @@ class User(Base) :
     
 
     def keys() :
-        return ['id', 'email', 'nickname', 'auth']
+        return ('id', 'email', 'nickname', 'auth')
 
     @property
     def password(self) :
-        return self.password
+        return self._password
     
     @password.setter
-    def password(self) :
-        self.password = generate_password_hash(self.password)
+    def password(self, raw) :
+        self._password = generate_password_hash(raw) # 这里的password前面的_不能漏，否则等于当前死循环
 
     @staticmethod
-    def register_by_user_email(nickname, account, password):
+    def register_user_by_email(nickname, account, secret) :
         with db.auto_commit() :
             user = User()
             user.nickname = nickname
-            user.emamil = account
-            user.password = generate_password_hash(password)
+            user.email = account
+            user.password = secret
+            # user.create_time = int(datetime.now().timestamp())
             db.session.add(user)
 
+
     @staticmethod
-    def verify(email, password):
+    def verify(email, password) :
         user = User.query.filter_by(email=email).first_or_404()
         if not user.check_password(password) :
             raise AuthFailed()

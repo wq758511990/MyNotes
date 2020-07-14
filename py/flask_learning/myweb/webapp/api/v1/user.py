@@ -4,6 +4,5 @@ api = RedPrint('user')
 
 @api.route('/<int:uid>')
 def getUser(uid) :
-    User.create_user()
     return 'a str from user_get' + str(uid)
 

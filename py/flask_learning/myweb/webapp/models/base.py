@@ -1,7 +1,7 @@
 """
  Created by 七月 on 2018/5/11.
 """
-# from app.libs.error_code import NotFound
+from webapp.libs.error_code import NotFound
 
 __author__ = '七月'
 
@@ -11,7 +11,7 @@ __author__ = '七月'
 from datetime import datetime
 
 from flask_sqlalchemy import SQLAlchemy as _SQLAlchemy, BaseQuery
-from sqlalchemy import inspect, Column, Integer, SmallInteger, orm
+from sqlalchemy import inspect, Column, Integer, SmallInteger, orm, DateTime
 from contextlib import contextmanager
 
 
@@ -49,12 +49,13 @@ db = SQLAlchemy(query_class=Query)
 
 
 class Base(db.Model):
-    __abstract__ = True
-    create_time = Column(Integer)
+    __abstract__ = True # Base作为基类， 不需要创建表
+    create_time = Column(DateTime, default=datetime.now().timestamp) # 这样可以默认添加create_time字段
     status = Column(SmallInteger, default=1)
-
+    
     def __init__(self):
-        self.create_time = int(datetime.now().timestamp())
+        # self.create_time = int(datetime.now().timestamp())
+        pass
 
     def __getitem__(self, item):
         return getattr(self, item)
