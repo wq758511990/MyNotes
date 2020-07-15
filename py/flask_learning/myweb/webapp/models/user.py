@@ -44,7 +44,12 @@ class User(Base) :
         user = User.query.filter_by(email=email).first_or_404()
         if not user.check_password(password) :
             raise AuthFailed()
-        scope = 'AdminScope' if user.auth == 2 else 'UserScope'
+        # 管理员身份匹配
+        auth_match = {
+            1: 'UserScope',
+            2: 'AdminScope'
+        }
+        scope = auth_match[user.auth]
         return {'uid': user.id, 'scope': scope}
 
     def check_password(self, raw):
