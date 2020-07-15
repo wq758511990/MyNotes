@@ -44,7 +44,7 @@ class User(Base) :
         user = User.query.filter_by(email=email).first_or_404()
         if not user.check_password(password) :
             raise AuthFailed()
-        # 管理员身份匹配
+        # 身份匹配
         auth_match = {
             1: 'UserScope',
             2: 'AdminScope'
