@@ -13,6 +13,7 @@ class User(Base) :
 
     @orm.reconstructor
     def __init__(self) :
+        # @orm.reconstructor 可以在数据模型被实例化的时候被调用，若不加这个装饰器则不可以
         pass
     
 

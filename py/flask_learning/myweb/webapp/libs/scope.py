@@ -27,6 +27,7 @@ class UserScope(Scope) :
     # 不允许访问v1.user 下的 super_get_user方法
     forbidden = ['v1.user+super_get_user']
     def __init__(self) :
+        # Admin可以访问的api中除了v1.user+super_get_user其他都可以访问
         self + AdminScope()
 
 class SuperScope(Scope) :
