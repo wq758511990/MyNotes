@@ -42,7 +42,6 @@ UserScope()
 def is_in_scope(scope, endpoint) :
     # globals 可以实现反射，通过字符串动态创建类
     gl = globals()
-    print(endpoint)
     scope = gl[scope]()
     splits = endpoint.split('+')
     red_name = splits[0]
