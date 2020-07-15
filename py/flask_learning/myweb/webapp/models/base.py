@@ -50,7 +50,7 @@ db = SQLAlchemy(query_class=Query)
 
 class Base(db.Model):
     __abstract__ = True # Base作为基类， 不需要创建表
-    create_time = Column(DateTime, default=datetime.now().timestamp) # 这样可以默认添加create_time字段
+    create_time = Column(Integer, default=datetime.now().timestamp) # 这样可以默认添加create_time字段
     status = Column(SmallInteger, default=1)
     
     def __init__(self):

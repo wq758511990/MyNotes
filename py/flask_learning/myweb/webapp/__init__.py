@@ -1,4 +1,4 @@
-from flask import Flask
+from .app import Flask
 
 def register_plugin(app) :
     from webapp.models.base import db

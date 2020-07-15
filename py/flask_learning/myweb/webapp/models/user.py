@@ -9,7 +9,6 @@ class User(Base) :
     email = Column(String(24), unique=True, nullable=False)
     nickname = Column(String(24), unique=True)
     auth = Column(SmallInteger, default=1)
-    # create_time = Column(Integer)
     _password = Column('password', String(100))
 
     @orm.reconstructor
@@ -17,7 +16,7 @@ class User(Base) :
         pass
     
 
-    def keys() :
+    def keys(self) :
         return ('id', 'email', 'nickname', 'auth')
 
     @property
