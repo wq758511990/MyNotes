@@ -7,6 +7,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', (req, res, next) => {
+  console.log(process.env)
   res.send('this is a post method')
 })
 
