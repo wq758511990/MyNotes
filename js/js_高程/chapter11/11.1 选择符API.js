@@ -56,3 +56,7 @@ div.classList.toggle("user");
 //  loading，正在加载文档；
 //  complete，已经加载完文档。
 
+
+
+// 11.3.3 HTMLdocument 变化
+
