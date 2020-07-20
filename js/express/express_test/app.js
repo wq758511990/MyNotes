@@ -17,9 +17,19 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
 // console.log(__dirname) C:\Users\admin\Desktop\MyNotes\js\express\express_test
 // console.log(path.join(__dirname, 'public'))
+
 app.use(express.static(path.join(__dirname, 'public')));
+
+// var myLogger = function(req, res, next) {
+//   console.log('logged')
+//   next()
+// }
+
+// app.use(myLogger) 这样可以加载一个中间件
+// 作用类似于。 拦截器
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
