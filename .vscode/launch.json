@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "CodeLens (Launch) - Hello",
+            "request": "launch",
+            "mainClass": "Hello",
+            "projectName": "MyNotes_eefd8be3"
+        },
+        {
             "type": "node",
             "request": "launch",
             "name": "启动程序",
