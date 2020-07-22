@@ -22,6 +22,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', (req, res, next) => {
+  console.log('index')
   res.send('this is a post method')
 })
 
