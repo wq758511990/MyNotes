@@ -7,11 +7,11 @@ var router = express.Router();
 // 这样子就只在该层，也就是index层下的 / 级别的get请求中添加了一个中间件
 // 路由器级别的中间件要跳过中间件使用的是next('router') app级别的是 next('route')
 
-
 router.get('/', (req, res, next) => {
   req.requestTime = new Date().toLocaleString()
   next()
 })
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -21,8 +21,9 @@ router.get('/', function(req, res, next) {
   res.send(requestText)
 });
 
+
 router.post('/', (req, res, next) => {
-  console.log('index')
+  console.log(req.requestTime)
   res.send('this is a post method')
 })
 
