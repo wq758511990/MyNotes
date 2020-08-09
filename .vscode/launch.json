@@ -12,13 +12,6 @@
             "console": "integratedTerminal"
         },
         {
-            "type": "java",
-            "name": "CodeLens (Launch) - Hello",
-            "request": "launch",
-            "mainClass": "Hello",
-            "projectName": "MyNotes_eefd8be3"
-        },
-        {
             "type": "node",
             "request": "launch",
             "name": "启动程序",
@@ -26,6 +19,15 @@
                 "<node_internals>/**"
             ],
             "program": "${workspaceFolder}\\js\\express\\express_test\\bin\\www"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "express_end",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\js\\vue_ele + node\\express_end\\bin\\www"
         }
     ]
 }

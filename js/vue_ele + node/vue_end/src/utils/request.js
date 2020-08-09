@@ -6,7 +6,7 @@ import { getToken } from '@/utils/auth'
 // create an axios instance
 const service = axios.create({
   // baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
-  baseURL: 'http://localhost',
+  baseURL: 'http://localhost:3000',
   // withCredentials: true, // send cookies when cross-domain requests
   timeout: 5000 // request timeout
 })
@@ -20,7 +20,7 @@ service.interceptors.request.use(
       // let each request carry token
       // ['X-Token'] is a custom headers key
       // please modify it according to the actual situation
-      config.headers['X-Token'] = getToken()
+      config.headers['Authorization'] = `Bearer ${getToken()}`
     }
     return config
   },
@@ -47,9 +47,10 @@ service.interceptors.response.use(
     const res = response.data
 
     // if the custom code is not 20000, it is judged as an error.
-    if (res.code !== 20000) {
+    if (res.code !== 0) {
+      const resMsg = res.msg || '请求失败'
       Message({
-        message: res.message || 'Error',
+        message: resMsg,
         type: 'error',
         duration: 5 * 1000
       })
@@ -67,15 +68,16 @@ service.interceptors.response.use(
           })
         })
       }
-      return Promise.reject(new Error(res.message || 'Error'))
+      return Promise.reject(new Error(resMsg))
     } else {
       return res
     }
   },
   error => {
-    console.log('err' + error) // for debug
+    console.log({error})
+    const { msg } = error.response.data
     Message({
-      message: error.message,
+      message: msg || '请求失败',
       type: 'error',
       duration: 5 * 1000
     })
