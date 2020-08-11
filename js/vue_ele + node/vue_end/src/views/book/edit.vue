@@ -1,5 +1,5 @@
 <template>
-  <detail :is-edit="false" />
+  <detail is-edit />
 </template>
 
 <script>
@@ -11,3 +11,6 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+</style>
