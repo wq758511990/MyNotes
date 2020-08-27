@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const userRouter = require('./user')
+const bookRouter = require('./book')
 const Result = require('../models/Result')
 const boom = require('boom')
 const { jwtAuth } = require('../utils/jwt')
@@ -13,6 +14,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.use('/user', userRouter);
+router.use('/book', bookRouter)
 
 /**
  * 集中处理404请求的中间件
