@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>hangge.com</title>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/javascript" src="node_modules\babel-polyfill\dist\polyfill.min.js"></script>
+    <script type="text/babel">
+        var arrayLike = {
+            '0': 1,
+            '1': 2,
+            '2': 3,
+            length: 3
+        };
+        var arr2 = Array.from(arrayLike, x => x + x);
+        console.log(arr2); // [2, 4, 6]
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
