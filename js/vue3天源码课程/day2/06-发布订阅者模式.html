@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class EventEmitter {
+            constructor() {
+                // {'click': [fn1, fn2], 'change': [fn]}
+                this.subs = Object.create(null)
+            }
+            $on(event, fn) {
+                // if (this.subs[event]) {
+                //     this.subs[event].push(fn)
+                // } else {
+                //     this.subs[event] = [fn]
+                // }
+                this.subs[event] = this.subs[event] || []
+                this.subs[event].push(fn)
+            }
+            $emit(event) {
+                if (this.subs[event]) {
+                    this.subs[event].forEach((handler) => {
+                        handler()
+                    })
+                }
+            }
+        }
+        let em = new EventEmitter()
+        em.$on('click', () => {
+            console.log('click1')
+        })
+        em.$on('click', () => {
+            console.log('click2')
+        })
+        em.$emit('click')
+    </script>
+</body>
+
+</html>
