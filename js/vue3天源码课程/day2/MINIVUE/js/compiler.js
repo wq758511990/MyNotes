@@ -60,7 +60,6 @@ class Compiler {
         })
         // 双向绑定
         node.addEventListener('input', () => {
-            this.vm[key] = node.value
         })
     }
     // 编译文本节点，处理差值表达式
