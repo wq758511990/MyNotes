@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "eslint-plugin-html": "^6.0.2"
+  },
+  "dependencies": {
+    "koa": "^2.13.0"
   }
 }
