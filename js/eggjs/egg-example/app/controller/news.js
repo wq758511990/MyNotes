@@ -7,6 +7,7 @@ class NewsController extends BaseController {
     // console.log('ctx', ctx.app.name)
     // console.log('this', this.app.name)
     const query = ctx.query
+    // console.log(ctx.rules)
     // ctx.request.body
     // ctx.body -> ctx.response.body
     // console.log('query',query)
