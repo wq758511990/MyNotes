@@ -31,7 +31,6 @@
           })
         },
         handleGet() {
-          console.log('get', axios)
           axios.get('http://127.0.0.1:7001/api/getUser').then((res) => {
             this.data = res
           })
