@@ -21,7 +21,7 @@ module.exports = appInfo => {
     serverUrl: 'https://hacker-news.firebaseio.com/v0',
   }
   // add your middleware config here
-  config.middleware = [];
+  config.middleware = ['errorHandler']; // 驼峰
 
   // add your user config here
   const userConfig = {
