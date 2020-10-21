@@ -2,40 +2,43 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <div id="app">
-        <div class="addData" @click="handleAdd">新增数据</div>
-        <div class="getData" @click="handleGet">拉取数据</div>
-    </div>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <div id="app">
+    <div class="addData" @click="handleAdd">新增数据</div>
+    <div class="getData" @click="handleGet">拉取数据</div>
+    <div>{{data}}</div>
+  </div>
 </head>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 <body>
-    <script>
-        var vm = new Vue({
-            el: '#app',
-            data() {
-                return {
-                    test: '测试纸'
-                }
-            },
-            methods: {
-                handleAdd() {
-                    axios.post('localhost:7001/api/addUser').then((res) => {
-                        console.log('res', res)
-                    })
-                },
-                handleGet() {
-                    console.log('get', axios)
-                    axios.get('localhost:7001/api/getUser').then((res) => {
-                        console.log('res', res)
-                    })
-                }
-            }
-        })
-    </script>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data() {
+        return {
+          test: '测试纸',
+          data: null
+        }
+      },
+      methods: {
+        handleAdd() {
+          axios.post('http://127.0.0.1:7001/api/addUser').then((res) => {
+            this.data = res
+          })
+        },
+        handleGet() {
+          console.log('get', axios)
+          axios.get('http://127.0.0.1:7001/api/getUser').then((res) => {
+            this.data = res
+          })
+        }
+      }
+    })
+  </script>
 </body>
 
 </html>

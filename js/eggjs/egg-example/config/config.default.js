@@ -23,6 +23,21 @@ module.exports = appInfo => {
   // add your middleware config here
   config.middleware = ['errorHandler']; // 驼峰
 
+  // 安全设置
+  config.security = {
+    csrf: {
+      enable: false,
+      ignoreJSON: true
+    },
+    domainWhiteList: ['*']
+  };
+
+  // 允许跨域
+  config.cors = {
+    origin: '*',
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH'
+  }
+
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
