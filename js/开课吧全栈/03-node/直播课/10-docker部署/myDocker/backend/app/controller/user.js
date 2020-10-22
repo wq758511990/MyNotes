@@ -4,7 +4,7 @@ class UserController extends Controller {
     async getUser() {
         const { ctx } = this
         ctx.body = {
-            msg: '123'
+            msg: '321'
         }
     }
 
