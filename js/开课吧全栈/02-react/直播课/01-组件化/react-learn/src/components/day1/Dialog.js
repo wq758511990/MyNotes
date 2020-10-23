@@ -5,7 +5,7 @@ export default class Dialog extends Component {
     super(props);
     const doc = window.document;
     this.node = doc.createElement("div");
-    doc.body.appendChild(this.node);
+    doc.body.appendChild(this.node)
   }
   componentWillUnmount() {
     window.document.body.removeChild(this.node);
@@ -20,7 +20,7 @@ export default class Dialog extends Component {
           </button>
         )}
       </div>,
-      this.node,
+      this.node, // 挂载到构造器中初始化的， append到body里的node节点
     );
   }
 }

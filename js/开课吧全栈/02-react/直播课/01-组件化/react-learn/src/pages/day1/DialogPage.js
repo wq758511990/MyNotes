@@ -21,7 +21,9 @@ export default class DialogPage extends Component {
           }>
           toggle
         </button>
-        {showDialog && <Dialog />}
+        {showDialog && <Dialog>
+          <h3>this is text</h3>
+        </Dialog>}
       </div>
     );
   }
