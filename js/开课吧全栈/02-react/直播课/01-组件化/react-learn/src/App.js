@@ -1,9 +1,10 @@
 import React from 'react';
 // import HocPage from './pages/HocPage';
 import './App.css'
+import DialogPage from './pages/day1/DialogPage';
 // import FormPage from './pages/FormPage';
 // import FormPage2 from './pages/FormPage2';
-import MyFormPage from './pages/MyFormPage';
+// import MyFormPage from './pages/MyFormPage';
 
 function App() {
   return (
@@ -15,7 +16,9 @@ function App() {
       {/* {表单组件 使用create} */}
       {/* <FormPage2 /> */}
       {/* {我的表单组件-实现create} */}
-      <MyFormPage />
+      {/* <MyFormPage /> */}
+      {/* {弹框实现} */}
+      <DialogPage />
     </div>
   );
 }
