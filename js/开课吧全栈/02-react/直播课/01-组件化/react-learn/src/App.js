@@ -9,6 +9,7 @@ import DialogPage from './pages/day1/DialogPage';
 function App() {
   return (
     <div className="App">
+      {/* {=====day1=====} */}
       {/* {高阶组件} */}
       {/* <HocPage /> */}
       {/* {表单组件} */}
@@ -19,6 +20,8 @@ function App() {
       {/* <MyFormPage /> */}
       {/* {弹框实现} */}
       <DialogPage />
+
+      {/* {=====day2=====} */}
     </div>
   );
 }
