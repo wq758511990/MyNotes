@@ -1,11 +1,12 @@
 import React from 'react';
+import ReduxPage from './pages/day2/ReduxPage'
 // import HocPage from './pages/HocPage';
 import './App.css'
 // import DialogPage from './pages/day1/DialogPage';
 // import FormPage from './pages/FormPage';
 // import FormPage2 from './pages/FormPage2';
 // import MyFormPage from './pages/MyFormPage';
-import ContextPage from './pages/day2/ContextPage'
+// import ContextPage from './pages/day2/ContextPage'
 
 function App() {
   return (
@@ -23,7 +24,8 @@ function App() {
       {/* <DialogPage /> */}
 
       {/* {=====day2=====} */}
-      <ContextPage />
+      {/* <ContextPage /> */}
+      <ReduxPage />
     </div>
   );
 }
