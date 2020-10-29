@@ -11,12 +11,12 @@
  * @return {ListNode}
  */
 var detectCycle = function (head) {
-  let fastNode = head.next.next,
-    slowNode = head.next;
+  let fastNode = head && head.next && head.next.next,
+    slowNode = head && head.next;
   let hasCycle = false;
   while (fastNode && slowNode) {
     if (fastNode !== slowNode) {
-      fastNode = fastNode.next.next;
+      fastNode = fastNode.next && fastNode.next.next;
       slowNode = slowNode.next;
     } else {
       hasCycle = true;
