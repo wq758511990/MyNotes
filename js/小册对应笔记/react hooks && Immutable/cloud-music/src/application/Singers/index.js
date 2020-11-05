@@ -17,7 +17,7 @@ import {
   refreshMoreHotSingerList,
 } from "./store/actionCreators";
 import { connect } from "react-redux";
-
+import { renderRoutes } from "react-router-config";
 function Singers(props) {
   let [category, setCategory] = useState("");
   let [alpha, setAlpha] = useState("");
@@ -34,9 +34,13 @@ function Singers(props) {
     pullUpRefreshDispatch,
     pullDownRefreshDispatch,
   } = props;
-
+  const enterDetail = (id) => {
+    props.history.push(`/singers/${id}`);
+  };
   useEffect(() => {
-    getHotSingerDispatch();
+    if (!singerList.size) {
+      getHotSingerDispatch();
+    }
     // eslint-disable-next-line
   }, []);
 
@@ -64,7 +68,10 @@ function Singers(props) {
       <List>
         {list.map((item, index) => {
           return (
-            <ListItem key={item.accountId + "" + index}>
+            <ListItem
+              key={item.accountId + "" + index}
+              onClick={() => enterDetail(item.id)}
+            >
               <div className="img_wrapper">
                 <LazyLoad
                   placeholder={
@@ -115,6 +122,7 @@ function Singers(props) {
           {renderSingerList()}
         </Scroll>
       </ListContainer>
+      {renderRoutes(props.route.routes)}
     </div>
   );
 }
