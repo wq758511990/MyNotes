@@ -10,9 +10,6 @@ module.exports = {
         es6: true
     },
     rules: {
-        'no-unused-vars': [
-            'warning',
-            { vars: 'all', args: 'after-used', ignoreRestSiblings: false }
-        ]
+        'no-unused-vars': [1]
     }
 }

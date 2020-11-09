@@ -9,28 +9,29 @@ class Store {
         this.state = new Vue({
             data: options.state
         })
+        console.log(this.state)
 
         // 绑定commit、dispatch的上下文为store
         this.commit = this.commit.bind(this)
         this.dispatch = this.dispatch.bind(this)
 
-        this._vm = new Vue({
-            data: {
-                // 两个$ Vue不做代理
-                $$state: options.data
-            }
-        })
+        // this._vm = new Vue({
+        //     data: {
+        //         // 两个$ Vue不做代理
+        //         $$state: options.data
+        //     }
+        // })
     }
 
     // store.state
-    get state() {
-        return this._vm._data.$$state
-    }
+    // get state() {
+    //     return this._vm._data.$$state
+    // }
 
-    set state(v) {
-        // 如果直接设置store.state
-        // 警告
-    }
+    // set state(v) {
+    //     // 如果直接设置store.state
+    //     // 警告
+    // }
 
     // type mutation类型
     // payload 载荷 参数
