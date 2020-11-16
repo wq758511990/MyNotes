@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <link type="text/css" rel="stylesheet" href="jsmind.css" />
+    <script type="text/javascript" src="jsmind.js"></script>
+  </head>
+  <body>
+    <div id="jsmind_container"></div>
+    <script type="text/javascript" src="data.json"></script>
+  </body>
+  <script>
+    var options = {
+      // options 将在下一章中详细介绍
+      container: 'jsmind_container', // [必选] 容器的ID，或者为容器的对象
+      editable: false, // [可选] 是否启用编辑
+      theme: 'orange', // [可选] 主题
+    }
+
+    var jm = new jsMind(options)
+    jm.show(mind)
+  </script>
+</html>
