@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul id="oList" style="cursor: default">
+      <li>列表项目1</li>
+      <li>列表项目2</li>
+      <li>列表项目3</li>
+      <li>列表项目4</li>
+    </ul>
+
+    <br />
+    <div id="oCode">请将鼠标移动到项目列表上。</div>
+  </body>
+  <script>
+    function rdl_eventHandle(e) {
+      event.cancelBubble = true
+      console.log(document.elementFromPoint(105, 57))
+      console.log(event.clientX, event.clientY)
+      var oPoint = document.elementFromPoint(event.clientX, event.clientY)
+      console.log(oPoint)
+      if (oPoint.tagName.toLowerCase() != 'li')
+        oCode.innerHTML = '请将鼠标移动到项目列表上。'
+      else
+        oCode.innerHTML =
+          "您的鼠标指针现在位于<font color='#FF3300'>" +
+          oPoint.innerText +
+          '</font>上面'
+    }
+    document.onmouseover = rdl_eventHandle
+  </script>
+</html>
