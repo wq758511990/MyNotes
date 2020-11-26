@@ -1,18 +1,29 @@
-function callback(num) {
+
+function callback (num) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (num === 1) {
-        resolve(1)
+        resolve(1);
       } else {
-        reject(2)
+        reject("error");
       }
-    }, 1000);
-  })
+    });
+  });
 }
 
-async function testReject() {
-  res = await callback(2).catch((e) => {console.log('e', e)})
-  console.log('res', res)
+async function testReject () {
+  res = await callback(2).catch((e) => {
+    console.log("e", e);
+  });
+  console.log("res", res);
+
+
+  // try {
+  //   // res = await callback(2)
+  //   throw 'oh no'
+  // } catch (err) {
+  //   console.log('err', err)
+  // }
 }
 
-testReject()
+testReject();
