@@ -5,9 +5,12 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "node",
+      "type": "pwa-node",
       "request": "launch",
-      "name": "node 调试",
+      "name": "Launch Program",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
       "program": "${file}"
     }
   ]

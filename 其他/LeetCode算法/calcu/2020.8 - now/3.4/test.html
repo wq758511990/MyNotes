@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <video
+      id="video"
+      controls
+      webkit-playsinline="true"
+      playsinline="true"
+      width="100%"
+      height="100%"
+      src="http://minio.591iq.com.cn/res/2021-03-09/E7C2BF4DEBBF2EE53228014DEC680AA9.mp4"
+    ></video>
+  </body>
+  <script>
+    var videoItem = document.getElementById('video')
+    videoItem.load()
+    videoItem.play()
+  </script>
+</html>
