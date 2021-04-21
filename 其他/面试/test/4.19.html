@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .wrapper {
+        border: 1px solid #000;
+        overflow: hidden;
+      }
+      /* .wrapper:after { */
+      /* 设置添加子元素的内容是空 */
+      /* content: ''; */
+      /* 设置添加子元素为块级元素 */
+      /* display: block; */
+      /* 设置添加的子元素的高度0 */
+      /* height: 0; */
+      /* 设置添加子元素看不见 */
+      /* visibility: hidden; */
+      /* 设置clear：both */
+      /* clear: both; */
+      /* } */
+      .wrapper > div {
+        width: 200px;
+        height: 200px;
+        float: left;
+      }
+      .box1 {
+        background-color: red;
+      }
+      .box2 {
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="box1"></div>
+      <div class="box2"></div>
+    </div>
+  </body>
+</html>
