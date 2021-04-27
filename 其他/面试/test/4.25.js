@@ -21,13 +21,28 @@ test.myCall(obj, 1, 2, 3)
 
 
 function test (groupSizes) {
-  const dict = {}
+  let map = {}
   const res = []
   for (let i = 0; i < groupSizes.length; i++) {
     let val = groupSizes[i]
-    dict[val] = i
+    if (!map[val]) {
+      map[val] = [i]
+      if (map[val].length === val) {
+        res.push(map[val])
+        map[val] = []
+      }
+      continue
+    }
+    if (map[val].length < val) {
+      map[val].push(i)
+    }
+    if (map[val].length === val) {
+      res.push(map[val])
+      map[val] = []
+    }
+
   }
-  console.log('dict', dict)
+  return res
 }
 
 
