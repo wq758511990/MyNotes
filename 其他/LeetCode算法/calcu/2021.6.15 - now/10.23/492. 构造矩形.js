@@ -18,4 +18,4 @@ var constructRectangle = function (area) {
 };
 
 
-console.log(constructRectangle(5)) *
+console.log(constructRectangle(5))
