@@ -13,7 +13,7 @@ var findDiagonalOrder = function (mat) {
   let changeTime = 0;
   let i = 0,
     j = 0;
-  while (i < m || j < n) {
+  while (i < m || j < n) {                
     ans.push(mat[i][j]);
     if (i === m - 1 && j === n - 1) {
       return ans;
