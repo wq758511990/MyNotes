@@ -24,17 +24,31 @@ class TreeNode {
 }
 
 function findBottomLeftValue(root: TreeNode | null): number {
-    let roots = [root];
-    let ret = 0
-    while(roots.length) {
-        const p = roots.shift()
-        if (p.right) {
-            roots.push(p.right)
-        }
-        if (p.left) {
-            roots.push(p.left)
-        }
-        ret = p.val
+  // let roots = [root];
+  // let ret = 0
+  // while(roots.length) {
+  //     const p = roots.shift()
+  //     if (p.right) {
+  //         roots.push(p.right)
+  //     }
+  //     if (p.left) {
+  //         roots.push(p.left)
+  //     }
+  //     ret = p.val
+  // }
+  // return ret
+  let curHeight = 0;
+  let curVal = 0;
+  const dfs = (root: TreeNode, height: number) => {
+    if (!root) return;
+    height++;
+    dfs(root.left, height);
+    dfs(root.right, height);
+    if (height > curHeight) {
+      curHeight = height;
+      curVal = root.val;
     }
-    return ret
+  };
+  dfs(root, 0);
+  return curVal;
 }
