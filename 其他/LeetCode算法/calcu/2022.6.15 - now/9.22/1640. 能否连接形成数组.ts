@@ -5,11 +5,8 @@ function canFormArray(arr: number[], pieces: number[][]): boolean {
   for (let i = 0; i < m; i++) {
     indexMap.set(pieces[i][0], i);
   }
-  console.log("indexMap", indexMap);
   for (let i = 0; i < n; i++) {
     const targetIdx = indexMap.get(arr[i]);
-    console.log("arr[i]", arr[i]);
-    console.log("targetIdx", targetIdx);
     if (targetIdx === undefined) return false;
     const targetArr = pieces[targetIdx];
     const tmpI = i;
