@@ -28,9 +28,7 @@ var areSentencesSimilar = function (sentence1, sentence2) {
     r1++;
     r2++;
   }
-  return l2 === r2;
+  return l2 + r2 === s2Arr.length;
 };
 
-console.log(
-  areSentencesSimilar("My name is Haley", "My Haley")
-);
+console.log(areSentencesSimilar("My name is Haley", "My Haley"));
