@@ -46,3 +46,22 @@ AuthenticationManager.prototype.countUnexpiredTokens = function (currentTime) {
  * obj.renew(tokenId,currentTime)
  * var param_3 = obj.countUnexpiredTokens(currentTime)
  */
+
+function Ele() {}
+
+Ele.prototype.sayHi = function () {
+  console.log("hi");
+};
+
+function Btn() {}
+
+Btn.prototype = Object.create(Ele.prototype);
+Btn.prototype.constructor = Btn;
+
+Btn.prototype.sayHi = function () {
+  console.log("hoo");
+};
+
+const btn = new Btn();
+Object.getPrototypeOf(btn).sayHi()
+
