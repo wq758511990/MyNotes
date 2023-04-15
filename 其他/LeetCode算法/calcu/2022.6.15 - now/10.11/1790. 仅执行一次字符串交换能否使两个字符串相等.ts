@@ -15,7 +15,7 @@ function areAlmostEqual(s1: string, s2: string): boolean {
           diffMap.delete(s2[i]);
         }
       }
-    }
+    }ccc 
   }
   return diffMap.size === 0;
 }
